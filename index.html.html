@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE TOEIC JOURNAL — Tạp Chí Học Từ Vựng Chuyên Nghiệp</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display, Inter, & Cormorant Garamond -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons for Crisp UI -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paper: '#FBF9F5',
+                        'paper-card': '#F4EFE6',
+                        ink: '#1A1A1A',
+                        'ink-light': '#5A5A5A',
+                        terracotta: '#8B2628',
+                        'terracotta-hover': '#6f1d1f',
+                        gold: '#C5A059',
+                        borderline: '#E2DAD0'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        garamond: ['Cormorant Garamond', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FBF9F5;
+            color: #1A1A1A;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .font-serif-title {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .font-garamond {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FBF9F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C5A059;
+            border-radius: 3px;
+        }
+
+        /* Magazine Drop Cap */
+        .dropcap::first-letter {
+            font-family: 'Playfair Display', Georgia, serif;
+            float: left;
+            font-size: 4rem;
+            line-height: 0.8;
+            padding-top: 4px;
+            padding-right: 12px;
+            padding-bottom: 4px;
+            color: #8B2628;
+            font-weight: 700;
+        }
+
+        /* Perspective Flip Card */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+
+        /* Subtle Audio Pulse */
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.85; }
+        }
+        .audio-playing {
+            animation: pulse-subtle 1.2s infinite ease-in-out;
+            background-color: #8B2628 !important;
+            color: #FFFFFF !important;
+        }
+    #view-editorial-read { display: none !important; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- TOP EDITORIAL BAR -->
+    <header class="border-b border-ink/20 px-4 py-2 text-xs uppercase tracking-widest text-ink-light flex justify-between items-center max-w-7xl mx-auto w-full">
+        <div class="flex items-center space-x-4">
+            <span id="current-date">Thứ Sáu, 30 Tháng 10, 2026</span>
+            <span class="hidden md:inline">• ISSUE NO. 180 • 50 TỪ VỰNG • CORPORATE & MANAGEMENT</span>
+        </div>
+        <div class="flex items-center space-x-6">
+            <!-- Audio Controls Bar -->
+            <div class="flex items-center space-x-2 bg-paper-card px-3 py-1 rounded-full border border-borderline">
+                <i class="ph-bold ph-speaker-high text-terracotta"></i>
+                <span class="text-[10px] font-semibold">GIỌNG ĐỌC:</span>
+                <select id="voice-accent" class="bg-transparent text-xs focus:outline-none font-medium cursor-pointer">
+                    <option value="en-US">Mỹ (US)</option>
+                    <option value="en-GB">Anh (UK)</option>
+                </select>
+                <span class="text-gray-300">|</span>
+                <button id="speed-toggle" class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-paper border border-borderline hover:bg-terracotta hover:text-white transition">
+                    1.0x
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAGAZINE MASTHEAD -->
+    <section class="text-center pt-8 pb-6 px-4 border-b border-ink">
+        <div class="max-w-7xl mx-auto">
+            <p class="text-xs uppercase tracking-[0.3em] text-terracotta font-semibold mb-1">Ấn Bản Từ Vựng Thương Mại & Tự Luyện TOEIC Đỉnh Cao</p>
+            <h1 class="font-serif-title text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-ink">
+                THE TOEIC JOURNAL
+            </h1>
+            <div class="flex items-center justify-center space-x-4 mt-3 text-xs md:text-sm font-garamond italic text-ink-light">
+                <span>300 từ vựng • 6 chủ đề TOEIC</span>
+                <span>•</span>
+                <span>Phát Âm Chuẩn Bản Xứ</span>
+                <span>•</span>
+                <span>Ngữ Cảnh Doanh Nghiệp Thực Tế</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- NAVIGATION TABS -->
+    <nav class="border-b border-ink/20 sticky top-0 bg-paper/95 backdrop-blur-md z-40">
+        <div class="max-w-7xl mx-auto flex justify-center overflow-x-auto py-3 px-4 space-x-6 md:space-x-10 text-sm font-semibold tracking-wider uppercase text-ink">
+            <button onclick="switchTab('front-page')" id="tab-front-page" class="nav-link text-terracotta border-b-2 border-terracotta pb-1 transition">Trang Nhất</button>
+            <button onclick="switchTab('categories')" id="tab-categories" class="nav-link hover:text-terracotta pb-1 transition">Chuyên Mục (6 Chủ Đề)</button>
+            <button onclick="switchTab('flashcards')" id="tab-flashcards" class="nav-link hover:text-terracotta pb-1 transition">Thẻ Lật Flashcards</button>
+            <button onclick="switchTab('quiz')" id="tab-quiz" class="nav-link hover:text-terracotta pb-1 transition">Luyện Tập TOEIC</button>
+            <button onclick="switchTab('saved')" id="tab-saved" class="nav-link hover:text-terracotta pb-1 transition flex items-center gap-1">
+                <i class="ph-bold ph-bookmark"></i> Từ Đã Lưu (<span id="saved-count">0</span>)
+            </button>
+            <button onclick="switchTab('glossary')" id="tab-glossary" class="nav-link hover:text-terracotta pb-1 transition">Từ Điển Tra Cứu</button>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full">
+
+        <!-- SECTION 1: FRONT PAGE -->
+        <div id="view-front-page" class="space-y-12">
+            <!-- HERO FEATURED WORD OF THE DAY -->
+            <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-ink/20 pb-12 items-stretch">
+                <div class="lg:col-span-8 bg-paper-card border border-borderline p-6 md:p-10 flex flex-col justify-between shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-terracotta text-white text-xs uppercase px-4 py-1 font-bold tracking-widest flex items-center gap-2">
+                        <span>Từ Vựng Tiêu Điểm</span>
+                        <button id="hero-bookmark-btn" onclick="toggleBookmarkHero()" class="text-white hover:text-gold">
+                            <i class="ph-bold ph-bookmark-simple text-sm" id="hero-bookmark-icon"></i>
+                        </button>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center space-x-3 text-terracotta text-sm font-semibold mb-2">
+                            <span class="uppercase tracking-wider" id="hero-category">Corporate & Management</span>
+                            <span>•</span>
+                            <span class="italic font-garamond text-base">TOEIC Target 900+</span>
+                        </div>
+
+                        <div class="flex flex-wrap items-baseline gap-4 mb-4">
+                            <h2 class="font-serif-title text-4xl md:text-6xl font-bold text-ink" id="hero-word">IMPLEMENT</h2>
+                            <span class="text-xl text-ink-light font-serif italic" id="hero-ipa">/ˈɪm.plə.ment/</span>
+                            <span class="bg-ink/10 text-ink text-xs px-2.5 py-1 font-bold uppercase rounded" id="hero-pos">Verb</span>
+                            
+                            <button onclick="playSpeech(document.getElementById('hero-word').innerText, 'hero-audio-btn')" id="hero-audio-btn" class="p-3 bg-terracotta text-white rounded-full hover:bg-terracotta-hover transition flex items-center justify-center shadow-md" title="Phát âm từ">
+                                <i class="ph-bold ph-speaker-high text-xl"></i>
+                            </button>
+                        </div>
+
+                        <div class="mb-6">
+                            <p class="text-lg md:text-xl font-serif text-ink italic mb-1" id="hero-def-en">"To start using a plan, system, or agreement; to put into effect."</p>
+                            <p class="text-sm md:text-base font-medium text-terracotta" id="hero-def-vi">Thực thi, tiến hành, áp dụng (kế hoạch, chính sách)</p>
+                        </div>
+
+                        <div class="bg-paper p-5 border-l-4 border-terracotta rounded-r shadow-inner mb-6 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs uppercase font-bold text-ink-light tracking-wider">Ví Dụ Chuẩn Đề Thi TOEIC Part 7:</span>
+                                <button onclick="playSpeech(document.getElementById('hero-example-en').innerText, 'hero-ex-audio-btn')" id="hero-ex-audio-btn" class="text-xs text-terracotta font-semibold hover:underline flex items-center gap-1">
+                                    <i class="ph-bold ph-speaker-high"></i> Nghe toàn câu
+                                </button>
+                            </div>
+                            <p class="font-serif text-base md:text-lg text-ink leading-relaxed" id="hero-example-en">
+                                "The board of directors decided to <strong class="text-terracotta font-bold underline decoration-terracotta/40">implement</strong> the new workplace safety policy starting next quarter."
+                            </p>
+                            <p class="text-xs text-ink-light italic" id="hero-example-vi">
+                                (Hội đồng quản trị đã quyết định thi hành chính sách an toàn lao động mới bắt đầu từ quý tới.)
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm">
+                            <div class="bg-paper/80 p-3 rounded border border-borderline">
+                                <span class="font-bold text-ink block mb-1 uppercase tracking-wider text-[11px] text-terracotta">Cụm Từ Thường Gặp (Collocations):</span>
+                                <ul class="list-disc list-inside space-y-1 text-ink-light" id="hero-collocations">
+                                    <li>Implement a strategy / plan</li>
+                                    <li>Implement new regulations</li>
+                                </ul>
+                            </div>
+                            <div class="bg-paper/80 p-3 rounded border border-borderline">
+                                <span class="font-bold text-ink block mb-1 uppercase tracking-wider text-[11px] text-terracotta">Từ Đồng Nghĩa (Synonyms):</span>
+                                <p class="text-ink-light" id="hero-synonyms">Execute, Enforce, Carry out, Apply</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-4 border-t border-ink/10 flex justify-between items-center text-xs text-ink-light">
+                        <span id="hero-footer-cat">Chủ đề: Corporate & Management</span>
+                        <button onclick="randomizeHeroWord()" class="font-bold text-ink hover:text-terracotta flex items-center space-x-1 bg-paper px-3 py-1.5 rounded border border-borderline">
+                            <i class="ph-bold ph-shuffle"></i>
+                            <span>Đổi Từ Ngẫu Nhiên</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Editorial Sidebar Highlights -->
+                <div class="lg:col-span-4 flex flex-col justify-between space-y-6">
+                    <div class="border-b-2 border-ink pb-2 flex justify-between items-center">
+                        <div>
+                            <h3 class="font-serif-title font-bold text-xl uppercase tracking-wider text-ink">Từ Vựng Chọn Lọc</h3>
+                            <p class="text-xs text-ink-light italic">Xuất hiện nhiều nhất trong TOEIC</p>
+                        </div>
+                        <button onclick="renderSidebarWords()" class="text-xs text-terracotta font-bold hover:underline"><i class="ph-bold ph-arrows-clockwise"></i> Làm mới</button>
+                    </div>
+
+                    <div class="space-y-6 divide-y divide-borderline" id="sidebar-words-container">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <div class="bg-ink text-paper p-6 relative overflow-hidden">
+                        <i class="ph-fill ph-quotes text-5xl text-paper/10 absolute -top-2 -left-2"></i>
+                        <p class="font-serif text-sm italic mb-3 relative z-10">
+                            "With 300 curated enterprise terms, mastering TOEIC is no longer about rote memorization, but editorial immersion."
+                        </p>
+                        <p class="text-xs font-bold text-gold uppercase tracking-widest">— TOEIC Editorial Staff</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BROWSE BY CATEGORIES PREVIEW -->
+        <section class="space-y-6">
+            <div class="flex justify-between items-end border-b border-ink/20 pb-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-terracotta">Khám Phá Theo Chủ Đề</span>
+                    <h3 class="font-serif-title text-3xl font-bold text-ink">6 chủ đề TOEIC • 300 từ vựng</h3>
+                </div>
+                <button onclick="switchTab('categories')" class="text-xs font-bold uppercase tracking-wider hover:text-terracotta flex items-center gap-1">
+                    Xem tất cả từ vựng <i class="ph-bold ph-arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="category-cards-grid">
+                <!-- Dynamic Category Cards -->
+            </div>
+        </section>
+        </div>
+
+        <!-- SECTION 2: CATEGORIES VIEW -->
+        <div id="view-categories" class="hidden space-y-8">
+            <div class="border-b border-ink pb-4 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                <div>
+                    <span class="text-xs uppercase font-bold tracking-widest text-terracotta">Danh Mục Chủ Đề Chuyên Sâu</span>
+                    <h2 class="font-serif-title text-4xl font-bold text-ink">Từ Vựng Theo Chủ Đề</h2>
+                </div>
+                <div class="flex flex-wrap gap-2" id="category-pills"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="category-words-grid"></div>
+        </div>
+
+        <!-- SECTION 3: FLASHCARDS VIEW -->
+        <div id="view-flashcards" class="hidden space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-terracotta">Luyện Nhớ Từ Vựng</span>
+                <h2 class="font-serif-title text-4xl font-bold text-ink">Thẻ Lật Flashcards</h2>
+                <p class="text-sm text-ink-light">Bấm vào thẻ để lật xem nghĩa và ví dụ. Có thể lọc theo từng chủ đề.</p>
+                <div class="flex flex-wrap justify-center items-center gap-2 pt-2">
+                    <label for="fc-category-filter" class="text-xs font-bold text-ink-light">Chọn chủ đề:</label>
+                    <select id="fc-category-filter" onchange="filterFlashcardsByCategory(this.value)" class="bg-paper border border-borderline text-xs font-bold text-ink px-3 py-2 rounded">
+                        <option value="All">Tất cả chủ đề (300 từ)</option>
+                        <option value="Corporate & Management">Corporate & Management (50 từ)</option>
+                        <option value="Finance & Accounting">Finance & Accounting (50 từ)</option>
+                        <option value="Legal & Contracts">Legal & Contracts (50 từ)</option>
+                        <option value="Marketing & Sales">Marketing & Sales (50 từ)</option>
+                        <option value="Human Resources">Human Resources (50 từ)</option>
+                        <option value="Operations & Logistics">Operations & Logistics (50 từ)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="max-w-xl mx-auto">
+                <div class="perspective-1000 w-full h-[380px] cursor-pointer" onclick="flipCard()">
+                    <div id="flashcard-inner" class="relative w-full h-full duration-500 transform-style-3d shadow-xl rounded-lg border border-borderline">
+                        <div class="absolute w-full h-full backface-hidden bg-paper-card p-8 flex flex-col justify-between rounded-lg border-2 border-borderline">
+                            <div class="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-ink-light">
+                                <span id="fc-category">Corporate & Management</span><span id="fc-counter">1 / 300</span>
+                            </div>
+                            <div class="text-center my-auto space-y-3">
+                                <h3 class="font-serif-title text-5xl font-bold text-ink" id="fc-word">NEGOTIATION</h3>
+                                <p class="text-xl font-serif italic text-ink-light" id="fc-ipa">/nəˌɡəʊ.ʃiˈeɪ.ʃən/</p>
+                                <span class="inline-block bg-terracotta/10 text-terracotta font-bold text-xs uppercase px-3 py-1 rounded-full" id="fc-pos">Noun</span>
+                            </div>
+                            <div class="text-center text-xs text-ink-light italic">Nhấn vào thẻ để xem định nghĩa và ví dụ</div>
+                        </div>
+                        <div class="absolute w-full h-full backface-hidden rotate-y-180 bg-ink text-paper p-8 flex flex-col justify-between rounded-lg border-2 border-gold">
+                            <div class="flex justify-between items-center text-xs text-gold uppercase tracking-widest font-bold">
+                                <span>Định Nghĩa & Ngữ Cảnh</span>
+                                <button onclick="event.stopPropagation(); playSpeech(document.getElementById('fc-word').innerText, 'fc-audio-btn')" id="fc-audio-btn" class="p-2 bg-gold/20 hover:bg-gold text-white rounded-full transition"><i class="ph-bold ph-speaker-high text-lg"></i></button>
+                            </div>
+                            <div class="my-auto space-y-4">
+                                <div><h4 class="text-xl font-bold text-gold mb-1" id="fc-def-vi">Nghĩa tiếng Việt</h4><p class="text-sm font-serif italic text-paper/80" id="fc-def-en">Định nghĩa tiếng Anh</p></div>
+                                <div class="bg-paper/10 p-3 rounded border border-paper/20"><p class="text-xs font-serif italic text-paper/90" id="fc-example">Example sentence</p></div>
+                            </div>
+                            <div class="text-center text-xs text-paper/50">Nhấn vào thẻ để lật lại</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center mt-5 gap-3">
+                    <button onclick="prevFlashcard()" class="px-5 py-3 bg-paper-card border border-borderline rounded font-bold hover:border-terracotta">← Từ trước</button>
+                    <button onclick="flipCard()" class="px-5 py-3 bg-ink text-paper rounded font-bold">Lật thẻ</button>
+                    <button onclick="nextFlashcard()" class="px-5 py-3 bg-terracotta text-white rounded font-bold">Từ tiếp →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 5: QUIZ VIEW -->
+        <div id="view-quiz" class="hidden space-y-8">
+            <div class="max-w-2xl mx-auto bg-paper-card border border-borderline p-6 md:p-10 rounded-lg shadow-sm">
+                <div class="flex justify-between items-center border-b border-ink/20 pb-4 mb-6">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-terracotta">Kiểm Tra Nghe & Nhớ Từ</span>
+                        <h2 class="font-serif-title text-2xl md:text-3xl font-bold text-ink">Thử Thách TOEIC Mini</h2>
+                    </div>
+                    <span class="text-sm font-bold bg-ink text-paper px-3 py-1 rounded" id="quiz-score">Điểm: 0</span>
+                </div>
+
+                <div id="quiz-content" class="space-y-6">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 6: SAVED WORDS VIEW -->
+        <div id="view-saved" class="hidden space-y-6">
+            <div class="flex justify-between items-center border-b border-ink/20 pb-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-terracotta">Sổ Tay Từ Vựng Cá Nhân</span>
+                    <h2 class="font-serif-title text-3xl font-bold text-ink">Từ Đã Lưu Để Ôn Tập</h2>
+                </div>
+                <button onclick="clearAllBookmarks()" class="text-xs font-bold uppercase text-terracotta hover:underline">
+                    Xóa tất cả
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="saved-words-grid">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+
+        <!-- SECTION 7: GLOSSARY SEARCH VIEW -->
+        <div id="view-glossary" class="hidden space-y-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 border-b border-ink/20 pb-6">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-terracotta">Tra Cứu Từ Vựng</span>
+                    <h2 class="font-serif-title text-3xl font-bold text-ink">Từ Điển Tạp Chí TOEIC</h2>
+                </div>
+                <div class="relative w-full md:w-80">
+                    <i class="ph-bold ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-ink-light"></i>
+                    <input type="text" id="search-input" onkeyup="filterGlossary()" placeholder="Tìm từ vựng, tiếng Việt, loại từ..." class="w-full pl-10 pr-4 py-2.5 bg-paper border border-borderline rounded text-sm text-ink focus:outline-none focus:border-terracotta">
+                </div>
+            </div>
+
+            <div class="overflow-x-auto bg-paper-card border border-borderline rounded-lg">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-ink/20 bg-paper/60 text-xs uppercase font-bold text-ink-light tracking-wider">
+                            <th class="p-4">Lưu</th>
+                            <th class="p-4">Từ Vựng & IPA</th>
+                            <th class="p-4">Loại Từ</th>
+                            <th class="p-4">Nghĩa Tiếng Việt</th>
+                            <th class="p-4">Chủ Đề</th>
+                            <th class="p-4 text-center">Phát Âm</th>
+                        </tr>
+                    </thead>
+                    <tbody id="glossary-tbody" class="divide-y divide-borderline font-serif text-sm">
+                        <!-- Populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="flex justify-between items-center pt-4" id="glossary-pagination">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t-2 border-ink bg-paper py-8 px-4 mt-16">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-xs text-ink-light space-y-4 md:space-y-0">
+            <div class="space-y-1 text-center md:text-left">
+                <p class="font-serif-title text-base font-bold text-ink uppercase">THE TOEIC JOURNAL</p>
+                <p>© 2026 Tạp chí Học Từ Vựng TOEIC Cao Cấp. Thiết kế chuẩn Editorial Magazine.</p>
+            </div>
+            <div class="flex space-x-6 uppercase font-semibold">
+                <a href="#" onclick="switchTab('front-page')" class="hover:text-terracotta">Trang Nhất</a>
+                
+                <a href="#" onclick="switchTab('glossary')" class="hover:text-terracotta">Từ Điển</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Ensure switchTab is globally defined immediately
+        function switchTab(tabId) {
+            const views = ['front-page', 'categories', 'flashcards', 'quiz', 'saved', 'glossary'];
+            views.forEach(view => {
+                const el = document.getElementById(`view-${view}`);
+                if (el) el.classList.add('hidden');
+            });
+
+            document.querySelectorAll('.nav-link').forEach(btn => {
+                btn.classList.remove('text-terracotta', 'border-b-2', 'border-terracotta');
+            });
+
+            const activeView = document.getElementById(`view-${tabId}`);
+            if (activeView) activeView.classList.remove('hidden');
+            
+            const activeNav = document.getElementById(`tab-${tabId}`);
+            if (activeNav) {
+                activeNav.classList.add('text-terracotta', 'border-b-2', 'border-terracotta');
+            }
+
+            if (tabId === 'saved') renderSavedWordsView();
+            if (tabId === 'quiz') renderQuizQuestion();
+            if (tabId === 'glossary') renderGlossary();
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        let currentFlashcardIndex = 0;
+        let speechRate = 1.0;
+        let quizScore = 0;
+        let currentQuizIndex = 0;
+        let savedWords = [];
+        
+        function loadBookmarksFromStorage() {
+            try {
+                const stored = localStorage.getItem('toeic_saved_words_500');
+                if (stored) savedWords = JSON.parse(stored);
+            } catch (e) {
+                savedWords = [];
+            }
+        }
+
+        function saveBookmarksToStorage() {
+            try {
+                localStorage.setItem('toeic_saved_words_500', JSON.stringify(savedWords));
+            } catch (e) {}
+            updateSavedCountUI();
+        }
+
+        function playSpeech(text, buttonId = null) {
+            if (!('speechSynthesis' in window)) return;
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            const selectedAccent = document.getElementById('voice-accent') ? document.getElementById('voice-accent').value : 'en-US';
+            utterance.lang = selectedAccent;
+            utterance.rate = speechRate;
+            if (buttonId) {
+                const btn = document.getElementById(buttonId);
+                if (btn) btn.classList.add('audio-playing');
+                utterance.onend = () => { if (btn) btn.classList.remove('audio-playing'); };
+            }
+            window.speechSynthesis.speak(utterance);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const speedBtn = document.getElementById('speed-toggle');
+            if (speedBtn) {
+                speedBtn.addEventListener('click', () => {
+                    if (speechRate === 1.0) { speechRate = 0.75; speedBtn.innerText = '0.75x'; }
+                    else if (speechRate === 0.75) { speechRate = 1.25; speedBtn.innerText = '1.25x'; }
+                    else { speechRate = 1.0; speedBtn.innerText = '1.0x'; }
+                });
+            }
+        });
+
+        // 300 TOEIC VOCABULARY DATABASE (6 CATEGORIES x 50 WORDS)
+        const toeicWords = [
+            { id: 'implement', word: 'Implement', ipa: '/ˈɪm.plə.ment/', pos: 'Verb', category: 'Corporate & Management', defEn: 'To put a plan or decision into effect.', defVi: 'Thực thi, áp dụng chính sách', exampleEn: 'The board decided to implement new safety measures.', exampleVi: 'Ban quản lý quyết định áp dụng biện pháp an toàn mới.', collocations: ['Implement a plan'], synonyms: ['Execute', 'Apply'] },
+            { id: 'negotiate', word: 'Negotiate', ipa: '/nəˈɡəʊ.ʃi.eɪt/', pos: 'Verb', category: 'Corporate & Management', defEn: 'To reach an agreement by discussion.', defVi: 'Đàm phán thương lượng', exampleEn: 'They met to negotiate the merger terms.', exampleVi: 'Họ gặp nhau để đàm phán điều khoản sáp nhập.', collocations: ['Negotiate a contract'], synonyms: ['Bargain', 'Discuss'] },
+            { id: 'delegate', word: 'Delegate', ipa: '/ˈdel.ɪ.ɡeɪt/', pos: 'Verb', category: 'Corporate & Management', defEn: 'To entrust a task to another.', defVi: 'Phân công, ủy quyền', exampleEn: 'Managers must delegate authority wisely.', exampleVi: 'Quản lý phải phân quyền khôn ngoan.', collocations: ['Delegate tasks'], synonyms: ['Assign', 'Entrust'] },
+            { id: 'supervise', word: 'Supervise', ipa: '/ˈsuː.pə.vaɪz/', pos: 'Verb', category: 'Corporate & Management', defEn: 'To oversee the execution of a task.', defVi: 'Giám sát hoạt động', exampleEn: 'She will supervise the transition.', exampleVi: 'Cô ấy sẽ giám sát quá trình chuyển giao.', collocations: ['Supervise staff'], synonyms: ['Oversee', 'Manage'] },
+            { id: 'enterprise', word: 'Enterprise', ipa: '/ˈen.tə.praɪz/', pos: 'Noun', category: 'Corporate & Management', defEn: 'A business or company.', defVi: 'Doanh nghiệp kinh doanh', exampleEn: 'Tax incentives support small enterprises.', exampleVi: 'Ưu đãi thuế hỗ trợ doanh nghiệp nhỏ.', collocations: ['Joint enterprise'], synonyms: ['Company', 'Firm'] },
+            { id: "coordinate", word: "Coordinate", ipa: "—", pos: "Verb", category: "Corporate & Management", defEn: "Organize people or activities so they work together.", defVi: "Phối hợp", exampleEn: "The director will coordinate the launch across departments.", exampleVi: "", collocations: ["coordinate a project"], synonyms: ["organize", "synchronize"] },
+            { id: "authorize", word: "Authorize", ipa: "—", pos: "Verb", category: "Corporate & Management", defEn: "Give official permission for something.", defVi: "Cho phép chính thức", exampleEn: "The manager authorized the revised schedule.", exampleVi: "", collocations: ["authorize a payment"], synonyms: ["approve", "permit"] },
+            { id: "facilitate", word: "Facilitate", ipa: "—", pos: "Verb", category: "Corporate & Management", defEn: "Make a process or action easier.", defVi: "Tạo điều kiện", exampleEn: "The new platform facilitates communication between teams.", exampleVi: "", collocations: ["facilitate communication"], synonyms: ["enable", "assist"] },
+            { id: "oversee", word: "Oversee", ipa: "—", pos: "Verb", category: "Corporate & Management", defEn: "Supervise a process or activity.", defVi: "Giám sát", exampleEn: "A senior manager will oversee the transition.", exampleVi: "", collocations: ["oversee operations"], synonyms: ["supervise", "monitor"] },
+            { id: "allocate", word: "Allocate", ipa: "—", pos: "Verb", category: "Corporate & Management", defEn: "Distribute resources for a particular purpose.", defVi: "Phân bổ", exampleEn: "The company allocated funds to the research team.", exampleVi: "", collocations: ["allocate resources"], synonyms: ["assign", "distribute"] },
+            { id: "streamline", word: "Streamline", ipa: "—", pos: "Verb", category: "Corporate & Management", defEn: "Make a process simpler and more efficient.", defVi: "Tinh giản, hợp lý hóa", exampleEn: "Management plans to streamline the approval process.", exampleVi: "", collocations: ["streamline operations"], synonyms: ["simplify", "optimize"] },
+            { id: "restructure", word: "Restructure", ipa: "—", pos: "Verb", category: "Corporate & Management", defEn: "Organize a company or system in a new way.", defVi: "Tái cơ cấu", exampleEn: "The firm will restructure its regional offices.", exampleVi: "", collocations: ["restructure a department"], synonyms: ["reorganize", "reform"] },
+            { id: "prioritize", word: "Prioritize", ipa: "—", pos: "Verb", category: "Corporate & Management", defEn: "Decide which tasks are most important.", defVi: "Ưu tiên", exampleEn: "Team leaders must prioritize urgent requests.", exampleVi: "", collocations: ["prioritize tasks"], synonyms: ["rank", "emphasize"] },
+            { id: "collaborate", word: "Collaborate", ipa: "—", pos: "Verb", category: "Corporate & Management", defEn: "Work jointly with other people or organizations.", defVi: "Hợp tác", exampleEn: "The two divisions will collaborate on the initiative.", exampleVi: "", collocations: ["collaborate with colleagues"], synonyms: ["cooperate", "partner"] },
+            { id: "assess", word: "Assess", ipa: "—", pos: "Verb", category: "Corporate & Management", defEn: "Judge the quality, importance, or extent of something.", defVi: "Đánh giá", exampleEn: "Executives will assess the proposal before deciding.", exampleVi: "", collocations: ["assess performance"], synonyms: ["evaluate", "appraise"] },
+            { id: "evaluate", word: "Evaluate", ipa: "—", pos: "Verb", category: "Corporate & Management", defEn: "Examine something to determine its value or effectiveness.", defVi: "Thẩm định, đánh giá", exampleEn: "The board evaluates each strategy quarterly.", exampleVi: "", collocations: ["evaluate a strategy"], synonyms: ["assess", "review"] },
+            { id: "appoint", word: "Appoint", ipa: "—", pos: "Verb", category: "Corporate & Management", defEn: "Officially choose someone for a position.", defVi: "Bổ nhiệm", exampleEn: "The company appointed a new operations director.", exampleVi: "", collocations: ["appoint a manager"], synonyms: ["name", "designate"] },
+            { id: "supervision", word: "Supervision", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "The act of directing or watching over work.", defVi: "Sự giám sát", exampleEn: "The project requires close supervision.", exampleVi: "", collocations: ["under supervision"], synonyms: ["oversight", "monitoring"] },
+            { id: "leadership", word: "Leadership", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "The ability to guide or direct a group.", defVi: "Năng lực lãnh đạo", exampleEn: "Strong leadership helped the team meet its targets.", exampleVi: "", collocations: ["demonstrate leadership"], synonyms: ["direction", "management"] },
+            { id: "executive", word: "Executive", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "A person with a senior management position.", defVi: "Người điều hành, giám đốc", exampleEn: "Executives met to discuss the expansion.", exampleVi: "", collocations: ["senior executive"], synonyms: ["director", "administrator"] },
+            { id: "department", word: "Department", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "A section of an organization with a particular function.", defVi: "Phòng ban", exampleEn: "Each department submitted its budget forecast.", exampleVi: "", collocations: ["department head"], synonyms: ["division", "unit"] },
+            { id: "headquarters", word: "Headquarters", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "The main office of an organization.", defVi: "Trụ sở chính", exampleEn: "The company's headquarters will move next year.", exampleVi: "", collocations: ["corporate headquarters"], synonyms: ["main office", "HQ"] },
+            { id: "initiative", word: "Initiative", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "A new plan or action intended to achieve a goal.", defVi: "Sáng kiến, chương trình", exampleEn: "Management introduced an initiative to reduce costs.", exampleVi: "", collocations: ["launch an initiative"], synonyms: ["program", "campaign"] },
+            { id: "objective", word: "Objective", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "Something a person or organization aims to achieve.", defVi: "Mục tiêu", exampleEn: "The primary objective is to improve retention.", exampleVi: "", collocations: ["meet an objective"], synonyms: ["goal", "aim"] },
+            { id: "strategy", word: "Strategy", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "A plan designed to achieve a long-term goal.", defVi: "Chiến lược", exampleEn: "The firm adopted a strategy for sustainable growth.", exampleVi: "", collocations: ["business strategy"], synonyms: ["plan", "approach"] },
+            { id: "policy", word: "Policy", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "An official rule or principle guiding decisions.", defVi: "Chính sách", exampleEn: "The updated policy applies to all employees.", exampleVi: "", collocations: ["implement a policy"], synonyms: ["guideline", "rule"] },
+            { id: "procedure", word: "Procedure", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "An established way of doing something.", defVi: "Quy trình", exampleEn: "Please follow the procedure for reporting expenses.", exampleVi: "", collocations: ["standard procedure"], synonyms: ["process", "protocol"] },
+            { id: "productivity", word: "Productivity", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "The rate at which work or goods are produced.", defVi: "Năng suất", exampleEn: "Flexible schedules improved staff productivity.", exampleVi: "", collocations: ["increase productivity"], synonyms: ["efficiency", "output"] },
+            { id: "efficiency", word: "Efficiency", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "The ability to work well without wasting resources.", defVi: "Hiệu quả", exampleEn: "The new system increased operational efficiency.", exampleVi: "", collocations: ["operational efficiency"], synonyms: ["effectiveness", "performance"] },
+            { id: "accountability", word: "Accountability", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "The obligation to explain or accept responsibility for actions.", defVi: "Trách nhiệm giải trình", exampleEn: "Clear accountability helps prevent delays.", exampleVi: "", collocations: ["ensure accountability"], synonyms: ["responsibility", "answerability"] },
+            { id: "consensus", word: "Consensus", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "A general agreement among members of a group.", defVi: "Sự đồng thuận", exampleEn: "The committee reached a consensus on the proposal.", exampleVi: "", collocations: ["reach a consensus"], synonyms: ["agreement", "unity"] },
+            { id: "merger", word: "Merger", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "The joining of two companies or organizations.", defVi: "Sự sáp nhập", exampleEn: "The merger is expected to expand market share.", exampleVi: "", collocations: ["corporate merger"], synonyms: ["combination", "consolidation"] },
+            { id: "expansion", word: "Expansion", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "The process of becoming larger or more extensive.", defVi: "Sự mở rộng", exampleEn: "The expansion will create management positions.", exampleVi: "", collocations: ["business expansion"], synonyms: ["growth", "development"] },
+            { id: "transition", word: "Transition", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "The process of changing from one state or system to another.", defVi: "Sự chuyển đổi", exampleEn: "Managers will support staff during the transition.", exampleVi: "", collocations: ["smooth transition"], synonyms: ["changeover", "shift"] },
+            { id: "performance", word: "Performance", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "How well a person or organization performs.", defVi: "Hiệu suất, kết quả làm việc", exampleEn: "Annual performance reviews begin in December.", exampleVi: "", collocations: ["performance review"], synonyms: ["achievement", "output"] },
+            { id: "assessment", word: "Assessment", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "A judgment about the quality or ability of something.", defVi: "Sự đánh giá", exampleEn: "The assessment identified areas for improvement.", exampleVi: "", collocations: ["performance assessment"], synonyms: ["evaluation", "appraisal"] },
+            { id: "subordinate", word: "Subordinate", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "A person who has a lower position in an organization.", defVi: "Cấp dưới", exampleEn: "Supervisors should give clear instructions to each subordinate.", exampleVi: "", collocations: ["direct subordinate"], synonyms: ["employee", "junior"] },
+            { id: "supervisor", word: "Supervisor", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "A person who oversees the work of others.", defVi: "Người giám sát", exampleEn: "Ask your supervisor to approve the request.", exampleVi: "", collocations: ["line supervisor"], synonyms: ["manager", "overseer"] },
+            { id: "consultant", word: "Consultant", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "A person who provides expert advice professionally.", defVi: "Chuyên gia tư vấn", exampleEn: "The company hired a consultant to review its structure.", exampleVi: "", collocations: ["management consultant"], synonyms: ["advisor", "specialist"] },
+            { id: "proficiency", word: "Proficiency", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "A high level of skill or ability.", defVi: "Sự thành thạo", exampleEn: "The role requires proficiency in project management.", exampleVi: "", collocations: ["demonstrate proficiency"], synonyms: ["expertise", "competence"] },
+            { id: "transparent", word: "Transparent", ipa: "—", pos: "Adjective", category: "Corporate & Management", defEn: "Open and easy to understand or verify.", defVi: "Minh bạch", exampleEn: "Leaders should maintain transparent communication.", exampleVi: "", collocations: ["transparent process"], synonyms: ["open", "clear"] },
+            { id: "strategic", word: "Strategic", ipa: "—", pos: "Adjective", category: "Corporate & Management", defEn: "Relating to long-term plans and important goals.", defVi: "Mang tính chiến lược", exampleEn: "The board approved a strategic investment plan.", exampleVi: "", collocations: ["strategic decision"], synonyms: ["long-term", "planned"] },
+            { id: "efficient", word: "Efficient", ipa: "—", pos: "Adjective", category: "Corporate & Management", defEn: "Working well without wasting time or resources.", defVi: "Hiệu quả", exampleEn: "An efficient workflow reduces unnecessary costs.", exampleVi: "", collocations: ["efficient system"], synonyms: ["productive", "effective"] },
+            { id: "accountable", word: "Accountable", ipa: "—", pos: "Adjective", category: "Corporate & Management", defEn: "Required to explain or accept responsibility for actions.", defVi: "Chịu trách nhiệm giải trình", exampleEn: "Each team leader is accountable for the final results.", exampleVi: "", collocations: ["accountable for results"], synonyms: ["responsible", "answerable"] },
+            { id: "proactive", word: "Proactive", ipa: "—", pos: "Adjective", category: "Corporate & Management", defEn: "Taking action before a problem occurs.", defVi: "Chủ động", exampleEn: "A proactive manager identifies risks early.", exampleVi: "", collocations: ["proactive approach"], synonyms: ["prepared", "forward-looking"] },
+            { id: "comprehensive", word: "Comprehensive", ipa: "—", pos: "Adjective", category: "Corporate & Management", defEn: "Including all or nearly all relevant details.", defVi: "Toàn diện", exampleEn: "The director requested a comprehensive progress report.", exampleVi: "", collocations: ["comprehensive review"], synonyms: ["thorough", "complete"] },
+            { id: "decisive", word: "Decisive", ipa: "—", pos: "Adjective", category: "Corporate & Management", defEn: "Able to make decisions quickly and confidently.", defVi: "Quyết đoán", exampleEn: "Decisive leadership helped resolve the dispute.", exampleVi: "", collocations: ["decisive action"], synonyms: ["determined", "resolute"] },
+            { id: "sustainable", word: "Sustainable", ipa: "—", pos: "Adjective", category: "Corporate & Management", defEn: "Able to continue over time without causing serious problems.", defVi: "Bền vững", exampleEn: "The company is pursuing sustainable business growth.", exampleVi: "", collocations: ["sustainable growth"], synonyms: ["viable", "long-lasting"] },
+            { id: "hierarchy", word: "Hierarchy", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "A system in which people or things are ranked.", defVi: "Hệ thống cấp bậc", exampleEn: "The organization has a clear management hierarchy.", exampleVi: "", collocations: ["corporate hierarchy"], synonyms: ["ranking", "structure"] },
+            { id: "delegation", word: "Delegation", ipa: "—", pos: "Noun", category: "Corporate & Management", defEn: "The act of giving tasks or authority to others.", defVi: "Sự ủy quyền", exampleEn: "Effective delegation gives team members more responsibility.", exampleVi: "", collocations: ["effective delegation"], synonyms: ["assignment", "authorization"] },
+            {"id": "finance-revenue", "word": "Revenue", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to doanh thu in a professional context.", "defVi": "doanh thu", "exampleEn": "The finance & accounting team reviewed the revenue before making a decision.", "exampleVi": "", "collocations": ["revenue policy"], "synonyms": []},
+            {"id": "finance-profit", "word": "Profit", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to lợi nhuận in a professional context.", "defVi": "lợi nhuận", "exampleEn": "The finance & accounting team reviewed the profit before making a decision.", "exampleVi": "", "collocations": ["profit policy"], "synonyms": []},
+            {"id": "finance-loss", "word": "Loss", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to khoản lỗ in a professional context.", "defVi": "khoản lỗ", "exampleEn": "The finance & accounting team reviewed the loss before making a decision.", "exampleVi": "", "collocations": ["loss policy"], "synonyms": []},
+            {"id": "finance-expense", "word": "Expense", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to chi phí in a professional context.", "defVi": "chi phí", "exampleEn": "The finance & accounting team reviewed the expense before making a decision.", "exampleVi": "", "collocations": ["expense policy"], "synonyms": []},
+            {"id": "finance-expenditure", "word": "Expenditure", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to khoản chi tiêu in a professional context.", "defVi": "khoản chi tiêu", "exampleEn": "The finance & accounting team reviewed the expenditure before making a decision.", "exampleVi": "", "collocations": ["expenditure policy"], "synonyms": []},
+            {"id": "finance-budget", "word": "Budget", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to ngân sách in a professional context.", "defVi": "ngân sách", "exampleEn": "The finance & accounting team reviewed the budget before making a decision.", "exampleVi": "", "collocations": ["budget policy"], "synonyms": []},
+            {"id": "finance-forecast", "word": "Forecast", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to dự báo in a professional context.", "defVi": "dự báo", "exampleEn": "The finance & accounting team reviewed the forecast before making a decision.", "exampleVi": "", "collocations": ["forecast policy"], "synonyms": []},
+            {"id": "finance-cash-flow", "word": "Cash Flow", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to dòng tiền in a professional context.", "defVi": "dòng tiền", "exampleEn": "The finance & accounting team reviewed the cash flow before making a decision.", "exampleVi": "", "collocations": ["cash flow policy"], "synonyms": []},
+            {"id": "finance-asset", "word": "Asset", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to tài sản in a professional context.", "defVi": "tài sản", "exampleEn": "The finance & accounting team reviewed the asset before making a decision.", "exampleVi": "", "collocations": ["asset policy"], "synonyms": []},
+            {"id": "finance-liability", "word": "Liability", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to nợ phải trả in a professional context.", "defVi": "nợ phải trả", "exampleEn": "The finance & accounting team reviewed the liability before making a decision.", "exampleVi": "", "collocations": ["liability policy"], "synonyms": []},
+            {"id": "finance-equity", "word": "Equity", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to vốn chủ sở hữu in a professional context.", "defVi": "vốn chủ sở hữu", "exampleEn": "The finance & accounting team reviewed the equity before making a decision.", "exampleVi": "", "collocations": ["equity policy"], "synonyms": []},
+            {"id": "finance-capital", "word": "Capital", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to vốn in a professional context.", "defVi": "vốn", "exampleEn": "The finance & accounting team reviewed the capital before making a decision.", "exampleVi": "", "collocations": ["capital policy"], "synonyms": []},
+            {"id": "finance-investment", "word": "Investment", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to khoản đầu tư in a professional context.", "defVi": "khoản đầu tư", "exampleEn": "The finance & accounting team reviewed the investment before making a decision.", "exampleVi": "", "collocations": ["investment policy"], "synonyms": []},
+            {"id": "finance-interest", "word": "Interest", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to lãi suất in a professional context.", "defVi": "lãi suất", "exampleEn": "The finance & accounting team reviewed the interest before making a decision.", "exampleVi": "", "collocations": ["interest policy"], "synonyms": []},
+            {"id": "finance-dividend", "word": "Dividend", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to cổ tức in a professional context.", "defVi": "cổ tức", "exampleEn": "The finance & accounting team reviewed the dividend before making a decision.", "exampleVi": "", "collocations": ["dividend policy"], "synonyms": []},
+            {"id": "finance-shareholder", "word": "Shareholder", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to cổ đông in a professional context.", "defVi": "cổ đông", "exampleEn": "The finance & accounting team reviewed the shareholder before making a decision.", "exampleVi": "", "collocations": ["shareholder policy"], "synonyms": []},
+            {"id": "finance-stock", "word": "Stock", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to cổ phiếu in a professional context.", "defVi": "cổ phiếu", "exampleEn": "The finance & accounting team reviewed the stock before making a decision.", "exampleVi": "", "collocations": ["stock policy"], "synonyms": []},
+            {"id": "finance-bond", "word": "Bond", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to trái phiếu in a professional context.", "defVi": "trái phiếu", "exampleEn": "The finance & accounting team reviewed the bond before making a decision.", "exampleVi": "", "collocations": ["bond policy"], "synonyms": []},
+            {"id": "finance-loan", "word": "Loan", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to khoản vay in a professional context.", "defVi": "khoản vay", "exampleEn": "The finance & accounting team reviewed the loan before making a decision.", "exampleVi": "", "collocations": ["loan policy"], "synonyms": []},
+            {"id": "finance-debt", "word": "Debt", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to khoản nợ in a professional context.", "defVi": "khoản nợ", "exampleEn": "The finance & accounting team reviewed the debt before making a decision.", "exampleVi": "", "collocations": ["debt policy"], "synonyms": []},
+            {"id": "finance-credit", "word": "Credit", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to tín dụng in a professional context.", "defVi": "tín dụng", "exampleEn": "The finance & accounting team reviewed the credit before making a decision.", "exampleVi": "", "collocations": ["credit policy"], "synonyms": []},
+            {"id": "finance-debit", "word": "Debit", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to khoản ghi nợ in a professional context.", "defVi": "khoản ghi nợ", "exampleEn": "The finance & accounting team reviewed the debit before making a decision.", "exampleVi": "", "collocations": ["debit policy"], "synonyms": []},
+            {"id": "finance-invoice", "word": "Invoice", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to hóa đơn in a professional context.", "defVi": "hóa đơn", "exampleEn": "The finance & accounting team reviewed the invoice before making a decision.", "exampleVi": "", "collocations": ["invoice policy"], "synonyms": []},
+            {"id": "finance-receipt", "word": "Receipt", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to biên lai in a professional context.", "defVi": "biên lai", "exampleEn": "The finance & accounting team reviewed the receipt before making a decision.", "exampleVi": "", "collocations": ["receipt policy"], "synonyms": []},
+            {"id": "finance-refund", "word": "Refund", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to khoản hoàn tiền in a professional context.", "defVi": "khoản hoàn tiền", "exampleEn": "The finance & accounting team reviewed the refund before making a decision.", "exampleVi": "", "collocations": ["refund policy"], "synonyms": []},
+            {"id": "finance-payment", "word": "Payment", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to khoản thanh toán in a professional context.", "defVi": "khoản thanh toán", "exampleEn": "The finance & accounting team reviewed the payment before making a decision.", "exampleVi": "", "collocations": ["payment policy"], "synonyms": []},
+            {"id": "finance-installment", "word": "Installment", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to khoản trả góp in a professional context.", "defVi": "khoản trả góp", "exampleEn": "The finance & accounting team reviewed the installment before making a decision.", "exampleVi": "", "collocations": ["installment policy"], "synonyms": []},
+            {"id": "finance-transaction", "word": "Transaction", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to giao dịch in a professional context.", "defVi": "giao dịch", "exampleEn": "The finance & accounting team reviewed the transaction before making a decision.", "exampleVi": "", "collocations": ["transaction policy"], "synonyms": []},
+            {"id": "finance-account", "word": "Account", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to tài khoản in a professional context.", "defVi": "tài khoản", "exampleEn": "The finance & accounting team reviewed the account before making a decision.", "exampleVi": "", "collocations": ["account policy"], "synonyms": []},
+            {"id": "finance-savings", "word": "Savings", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to tiền tiết kiệm in a professional context.", "defVi": "tiền tiết kiệm", "exampleEn": "The finance & accounting team reviewed the savings before making a decision.", "exampleVi": "", "collocations": ["savings policy"], "synonyms": []},
+            {"id": "finance-withdraw", "word": "Withdraw", "ipa": "—", "pos": "Verb", "category": "Finance & Accounting", "defEn": "A business term referring to rút tiền in a professional context.", "defVi": "rút tiền", "exampleEn": "The finance & accounting team reviewed the withdraw before making a decision.", "exampleVi": "", "collocations": ["withdraw policy"], "synonyms": []},
+            {"id": "finance-deposit", "word": "Deposit", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to tiền gửi in a professional context.", "defVi": "tiền gửi", "exampleEn": "The finance & accounting team reviewed the deposit before making a decision.", "exampleVi": "", "collocations": ["deposit policy"], "synonyms": []},
+            {"id": "finance-balance", "word": "Balance", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to số dư in a professional context.", "defVi": "số dư", "exampleEn": "The finance & accounting team reviewed the balance before making a decision.", "exampleVi": "", "collocations": ["balance policy"], "synonyms": []},
+            {"id": "finance-overdraft", "word": "Overdraft", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to thấu chi in a professional context.", "defVi": "thấu chi", "exampleEn": "The finance & accounting team reviewed the overdraft before making a decision.", "exampleVi": "", "collocations": ["overdraft policy"], "synonyms": []},
+            {"id": "finance-accounting", "word": "Accounting", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to kế toán in a professional context.", "defVi": "kế toán", "exampleEn": "The finance & accounting team reviewed the accounting before making a decision.", "exampleVi": "", "collocations": ["accounting policy"], "synonyms": []},
+            {"id": "finance-audit", "word": "Audit", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to kiểm toán in a professional context.", "defVi": "kiểm toán", "exampleEn": "The finance & accounting team reviewed the audit before making a decision.", "exampleVi": "", "collocations": ["audit policy"], "synonyms": []},
+            {"id": "finance-auditor", "word": "Auditor", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to kiểm toán viên in a professional context.", "defVi": "kiểm toán viên", "exampleEn": "The finance & accounting team reviewed the auditor before making a decision.", "exampleVi": "", "collocations": ["auditor policy"], "synonyms": []},
+            {"id": "finance-tax", "word": "Tax", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to thuế in a professional context.", "defVi": "thuế", "exampleEn": "The finance & accounting team reviewed the tax before making a decision.", "exampleVi": "", "collocations": ["tax policy"], "synonyms": []},
+            {"id": "finance-taxation", "word": "Taxation", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to việc đánh thuế in a professional context.", "defVi": "việc đánh thuế", "exampleEn": "The finance & accounting team reviewed the taxation before making a decision.", "exampleVi": "", "collocations": ["taxation policy"], "synonyms": []},
+            {"id": "finance-deduction", "word": "Deduction", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to khoản khấu trừ in a professional context.", "defVi": "khoản khấu trừ", "exampleEn": "The finance & accounting team reviewed the deduction before making a decision.", "exampleVi": "", "collocations": ["deduction policy"], "synonyms": []},
+            {"id": "finance-reimbursement", "word": "Reimbursement", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to khoản hoàn trả in a professional context.", "defVi": "khoản hoàn trả", "exampleEn": "The finance & accounting team reviewed the reimbursement before making a decision.", "exampleVi": "", "collocations": ["reimbursement policy"], "synonyms": []},
+            {"id": "finance-payroll", "word": "Payroll", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to bảng lương in a professional context.", "defVi": "bảng lương", "exampleEn": "The finance & accounting team reviewed the payroll before making a decision.", "exampleVi": "", "collocations": ["payroll policy"], "synonyms": []},
+            {"id": "finance-salary", "word": "Salary", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to tiền lương in a professional context.", "defVi": "tiền lương", "exampleEn": "The finance & accounting team reviewed the salary before making a decision.", "exampleVi": "", "collocations": ["salary policy"], "synonyms": []},
+            {"id": "finance-wage", "word": "Wage", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to tiền công in a professional context.", "defVi": "tiền công", "exampleEn": "The finance & accounting team reviewed the wage before making a decision.", "exampleVi": "", "collocations": ["wage policy"], "synonyms": []},
+            {"id": "finance-commission", "word": "Commission", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to tiền hoa hồng in a professional context.", "defVi": "tiền hoa hồng", "exampleEn": "The finance & accounting team reviewed the commission before making a decision.", "exampleVi": "", "collocations": ["commission policy"], "synonyms": []},
+            {"id": "finance-asset-allocation", "word": "Asset Allocation", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to phân bổ tài sản in a professional context.", "defVi": "phân bổ tài sản", "exampleEn": "The finance & accounting team reviewed the asset allocation before making a decision.", "exampleVi": "", "collocations": ["asset allocation policy"], "synonyms": []},
+            {"id": "finance-bankruptcy", "word": "Bankruptcy", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to phá sản in a professional context.", "defVi": "phá sản", "exampleEn": "The finance & accounting team reviewed the bankruptcy before making a decision.", "exampleVi": "", "collocations": ["bankruptcy policy"], "synonyms": []},
+            {"id": "finance-solvent", "word": "Solvent", "ipa": "—", "pos": "Adjective", "category": "Finance & Accounting", "defEn": "A business term referring to có khả năng thanh toán in a professional context.", "defVi": "có khả năng thanh toán", "exampleEn": "The finance & accounting team reviewed the solvent before making a decision.", "exampleVi": "", "collocations": ["solvent policy"], "synonyms": []},
+            {"id": "finance-liquid", "word": "Liquid", "ipa": "—", "pos": "Adjective", "category": "Finance & Accounting", "defEn": "A business term referring to thanh khoản cao in a professional context.", "defVi": "thanh khoản cao", "exampleEn": "The finance & accounting team reviewed the liquid before making a decision.", "exampleVi": "", "collocations": ["liquid policy"], "synonyms": []},
+            {"id": "finance-financial-statement", "word": "Financial Statement", "ipa": "—", "pos": "Noun", "category": "Finance & Accounting", "defEn": "A business term referring to báo cáo tài chính in a professional context.", "defVi": "báo cáo tài chính", "exampleEn": "The finance & accounting team reviewed the financial statement before making a decision.", "exampleVi": "", "collocations": ["financial statement policy"], "synonyms": []},
+            {"id": "legal-contract", "word": "Contract", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to hợp đồng in a professional context.", "defVi": "hợp đồng", "exampleEn": "The legal & contracts team reviewed the contract before making a decision.", "exampleVi": "", "collocations": ["contract policy"], "synonyms": []},
+            {"id": "legal-agreement", "word": "Agreement", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to thỏa thuận in a professional context.", "defVi": "thỏa thuận", "exampleEn": "The legal & contracts team reviewed the agreement before making a decision.", "exampleVi": "", "collocations": ["agreement policy"], "synonyms": []},
+            {"id": "legal-clause", "word": "Clause", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to điều khoản in a professional context.", "defVi": "điều khoản", "exampleEn": "The legal & contracts team reviewed the clause before making a decision.", "exampleVi": "", "collocations": ["clause policy"], "synonyms": []},
+            {"id": "legal-term", "word": "Term", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to điều kiện in a professional context.", "defVi": "điều kiện", "exampleEn": "The legal & contracts team reviewed the term before making a decision.", "exampleVi": "", "collocations": ["term policy"], "synonyms": []},
+            {"id": "legal-provision", "word": "Provision", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to điều khoản quy định in a professional context.", "defVi": "điều khoản quy định", "exampleEn": "The legal & contracts team reviewed the provision before making a decision.", "exampleVi": "", "collocations": ["provision policy"], "synonyms": []},
+            {"id": "legal-amendment", "word": "Amendment", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to sửa đổi in a professional context.", "defVi": "sửa đổi", "exampleEn": "The legal & contracts team reviewed the amendment before making a decision.", "exampleVi": "", "collocations": ["amendment policy"], "synonyms": []},
+            {"id": "legal-negotiation", "word": "Negotiation", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to đàm phán in a professional context.", "defVi": "đàm phán", "exampleEn": "The legal & contracts team reviewed the negotiation before making a decision.", "exampleVi": "", "collocations": ["negotiation policy"], "synonyms": []},
+            {"id": "legal-signature", "word": "Signature", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to chữ ký in a professional context.", "defVi": "chữ ký", "exampleEn": "The legal & contracts team reviewed the signature before making a decision.", "exampleVi": "", "collocations": ["signature policy"], "synonyms": []},
+            {"id": "legal-signatory", "word": "Signatory", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to bên ký kết in a professional context.", "defVi": "bên ký kết", "exampleEn": "The legal & contracts team reviewed the signatory before making a decision.", "exampleVi": "", "collocations": ["signatory policy"], "synonyms": []},
+            {"id": "legal-obligation", "word": "Obligation", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to nghĩa vụ in a professional context.", "defVi": "nghĩa vụ", "exampleEn": "The legal & contracts team reviewed the obligation before making a decision.", "exampleVi": "", "collocations": ["obligation policy"], "synonyms": []},
+            {"id": "legal-liability", "word": "Liability", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to trách nhiệm pháp lý in a professional context.", "defVi": "trách nhiệm pháp lý", "exampleEn": "The legal & contracts team reviewed the liability before making a decision.", "exampleVi": "", "collocations": ["liability policy"], "synonyms": []},
+            {"id": "legal-breach", "word": "Breach", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to vi phạm in a professional context.", "defVi": "vi phạm", "exampleEn": "The legal & contracts team reviewed the breach before making a decision.", "exampleVi": "", "collocations": ["breach policy"], "synonyms": []},
+            {"id": "legal-violation", "word": "Violation", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to sự vi phạm in a professional context.", "defVi": "sự vi phạm", "exampleEn": "The legal & contracts team reviewed the violation before making a decision.", "exampleVi": "", "collocations": ["violation policy"], "synonyms": []},
+            {"id": "legal-compliance", "word": "Compliance", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to sự tuân thủ in a professional context.", "defVi": "sự tuân thủ", "exampleEn": "The legal & contracts team reviewed the compliance before making a decision.", "exampleVi": "", "collocations": ["compliance policy"], "synonyms": []},
+            {"id": "legal-regulation", "word": "Regulation", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to quy định in a professional context.", "defVi": "quy định", "exampleEn": "The legal & contracts team reviewed the regulation before making a decision.", "exampleVi": "", "collocations": ["regulation policy"], "synonyms": []},
+            {"id": "legal-legislation", "word": "Legislation", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to pháp luật in a professional context.", "defVi": "pháp luật", "exampleEn": "The legal & contracts team reviewed the legislation before making a decision.", "exampleVi": "", "collocations": ["legislation policy"], "synonyms": []},
+            {"id": "legal-statute", "word": "Statute", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to đạo luật in a professional context.", "defVi": "đạo luật", "exampleEn": "The legal & contracts team reviewed the statute before making a decision.", "exampleVi": "", "collocations": ["statute policy"], "synonyms": []},
+            {"id": "legal-policy", "word": "Policy", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to chính sách in a professional context.", "defVi": "chính sách", "exampleEn": "The legal & contracts team reviewed the policy before making a decision.", "exampleVi": "", "collocations": ["policy policy"], "synonyms": []},
+            {"id": "legal-confidential", "word": "Confidential", "ipa": "—", "pos": "Adjective", "category": "Legal & Contracts", "defEn": "A business term referring to bảo mật in a professional context.", "defVi": "bảo mật", "exampleEn": "The legal & contracts team reviewed the confidential before making a decision.", "exampleVi": "", "collocations": ["confidential policy"], "synonyms": []},
+            {"id": "legal-confidentiality", "word": "Confidentiality", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to tính bảo mật in a professional context.", "defVi": "tính bảo mật", "exampleEn": "The legal & contracts team reviewed the confidentiality before making a decision.", "exampleVi": "", "collocations": ["confidentiality policy"], "synonyms": []},
+            {"id": "legal-disclosure", "word": "Disclosure", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to sự tiết lộ in a professional context.", "defVi": "sự tiết lộ", "exampleEn": "The legal & contracts team reviewed the disclosure before making a decision.", "exampleVi": "", "collocations": ["disclosure policy"], "synonyms": []},
+            {"id": "legal-consent", "word": "Consent", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to sự đồng ý in a professional context.", "defVi": "sự đồng ý", "exampleEn": "The legal & contracts team reviewed the consent before making a decision.", "exampleVi": "", "collocations": ["consent policy"], "synonyms": []},
+            {"id": "legal-authorization", "word": "Authorization", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to sự cho phép in a professional context.", "defVi": "sự cho phép", "exampleEn": "The legal & contracts team reviewed the authorization before making a decision.", "exampleVi": "", "collocations": ["authorization policy"], "synonyms": []},
+            {"id": "legal-warranty", "word": "Warranty", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to cam kết bảo hành in a professional context.", "defVi": "cam kết bảo hành", "exampleEn": "The legal & contracts team reviewed the warranty before making a decision.", "exampleVi": "", "collocations": ["warranty policy"], "synonyms": []},
+            {"id": "legal-guarantee", "word": "Guarantee", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to sự bảo đảm in a professional context.", "defVi": "sự bảo đảm", "exampleEn": "The legal & contracts team reviewed the guarantee before making a decision.", "exampleVi": "", "collocations": ["guarantee policy"], "synonyms": []},
+            {"id": "legal-indemnity", "word": "Indemnity", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to đền bù thiệt hại in a professional context.", "defVi": "đền bù thiệt hại", "exampleEn": "The legal & contracts team reviewed the indemnity before making a decision.", "exampleVi": "", "collocations": ["indemnity policy"], "synonyms": []},
+            {"id": "legal-compensation", "word": "Compensation", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to khoản bồi thường in a professional context.", "defVi": "khoản bồi thường", "exampleEn": "The legal & contracts team reviewed the compensation before making a decision.", "exampleVi": "", "collocations": ["compensation policy"], "synonyms": []},
+            {"id": "legal-penalty", "word": "Penalty", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to khoản phạt in a professional context.", "defVi": "khoản phạt", "exampleEn": "The legal & contracts team reviewed the penalty before making a decision.", "exampleVi": "", "collocations": ["penalty policy"], "synonyms": []},
+            {"id": "legal-fine", "word": "Fine", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to tiền phạt in a professional context.", "defVi": "tiền phạt", "exampleEn": "The legal & contracts team reviewed the fine before making a decision.", "exampleVi": "", "collocations": ["fine policy"], "synonyms": []},
+            {"id": "legal-dispute", "word": "Dispute", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to tranh chấp in a professional context.", "defVi": "tranh chấp", "exampleEn": "The legal & contracts team reviewed the dispute before making a decision.", "exampleVi": "", "collocations": ["dispute policy"], "synonyms": []},
+            {"id": "legal-litigation", "word": "Litigation", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to kiện tụng in a professional context.", "defVi": "kiện tụng", "exampleEn": "The legal & contracts team reviewed the litigation before making a decision.", "exampleVi": "", "collocations": ["litigation policy"], "synonyms": []},
+            {"id": "legal-lawsuit", "word": "Lawsuit", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to vụ kiện in a professional context.", "defVi": "vụ kiện", "exampleEn": "The legal & contracts team reviewed the lawsuit before making a decision.", "exampleVi": "", "collocations": ["lawsuit policy"], "synonyms": []},
+            {"id": "legal-arbitration", "word": "Arbitration", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to trọng tài in a professional context.", "defVi": "trọng tài", "exampleEn": "The legal & contracts team reviewed the arbitration before making a decision.", "exampleVi": "", "collocations": ["arbitration policy"], "synonyms": []},
+            {"id": "legal-mediation", "word": "Mediation", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to hòa giải in a professional context.", "defVi": "hòa giải", "exampleEn": "The legal & contracts team reviewed the mediation before making a decision.", "exampleVi": "", "collocations": ["mediation policy"], "synonyms": []},
+            {"id": "legal-settlement", "word": "Settlement", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to sự dàn xếp in a professional context.", "defVi": "sự dàn xếp", "exampleEn": "The legal & contracts team reviewed the settlement before making a decision.", "exampleVi": "", "collocations": ["settlement policy"], "synonyms": []},
+            {"id": "legal-jurisdiction", "word": "Jurisdiction", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to thẩm quyền xét xử in a professional context.", "defVi": "thẩm quyền xét xử", "exampleEn": "The legal & contracts team reviewed the jurisdiction before making a decision.", "exampleVi": "", "collocations": ["jurisdiction policy"], "synonyms": []},
+            {"id": "legal-attorney", "word": "Attorney", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to luật sư in a professional context.", "defVi": "luật sư", "exampleEn": "The legal & contracts team reviewed the attorney before making a decision.", "exampleVi": "", "collocations": ["attorney policy"], "synonyms": []},
+            {"id": "legal-counsel", "word": "Counsel", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to luật sư tư vấn in a professional context.", "defVi": "luật sư tư vấn", "exampleEn": "The legal & contracts team reviewed the counsel before making a decision.", "exampleVi": "", "collocations": ["counsel policy"], "synonyms": []},
+            {"id": "legal-legal-counsel", "word": "Legal Counsel", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to cố vấn pháp lý in a professional context.", "defVi": "cố vấn pháp lý", "exampleEn": "The legal & contracts team reviewed the legal counsel before making a decision.", "exampleVi": "", "collocations": ["legal counsel policy"], "synonyms": []},
+            {"id": "legal-plaintiff", "word": "Plaintiff", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to nguyên đơn in a professional context.", "defVi": "nguyên đơn", "exampleEn": "The legal & contracts team reviewed the plaintiff before making a decision.", "exampleVi": "", "collocations": ["plaintiff policy"], "synonyms": []},
+            {"id": "legal-defendant", "word": "Defendant", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to bị đơn in a professional context.", "defVi": "bị đơn", "exampleEn": "The legal & contracts team reviewed the defendant before making a decision.", "exampleVi": "", "collocations": ["defendant policy"], "synonyms": []},
+            {"id": "legal-claim", "word": "Claim", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to khiếu kiện in a professional context.", "defVi": "khiếu kiện", "exampleEn": "The legal & contracts team reviewed the claim before making a decision.", "exampleVi": "", "collocations": ["claim policy"], "synonyms": []},
+            {"id": "legal-testimony", "word": "Testimony", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to lời khai in a professional context.", "defVi": "lời khai", "exampleEn": "The legal & contracts team reviewed the testimony before making a decision.", "exampleVi": "", "collocations": ["testimony policy"], "synonyms": []},
+            {"id": "legal-evidence", "word": "Evidence", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to bằng chứng in a professional context.", "defVi": "bằng chứng", "exampleEn": "The legal & contracts team reviewed the evidence before making a decision.", "exampleVi": "", "collocations": ["evidence policy"], "synonyms": []},
+            {"id": "legal-enforce", "word": "Enforce", "ipa": "—", "pos": "Verb", "category": "Legal & Contracts", "defEn": "A business term referring to thi hành in a professional context.", "defVi": "thi hành", "exampleEn": "The legal & contracts team reviewed the enforce before making a decision.", "exampleVi": "", "collocations": ["enforce policy"], "synonyms": []},
+            {"id": "legal-terminate", "word": "Terminate", "ipa": "—", "pos": "Verb", "category": "Legal & Contracts", "defEn": "A business term referring to chấm dứt in a professional context.", "defVi": "chấm dứt", "exampleEn": "The legal & contracts team reviewed the terminate before making a decision.", "exampleVi": "", "collocations": ["terminate policy"], "synonyms": []},
+            {"id": "legal-renewal", "word": "Renewal", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to gia hạn in a professional context.", "defVi": "gia hạn", "exampleEn": "The legal & contracts team reviewed the renewal before making a decision.", "exampleVi": "", "collocations": ["renewal policy"], "synonyms": []},
+            {"id": "legal-expiration", "word": "Expiration", "ipa": "—", "pos": "Noun", "category": "Legal & Contracts", "defEn": "A business term referring to hết hạn in a professional context.", "defVi": "hết hạn", "exampleEn": "The legal & contracts team reviewed the expiration before making a decision.", "exampleVi": "", "collocations": ["expiration policy"], "synonyms": []},
+            {"id": "legal-binding", "word": "Binding", "ipa": "—", "pos": "Adjective", "category": "Legal & Contracts", "defEn": "A business term referring to có tính ràng buộc in a professional context.", "defVi": "có tính ràng buộc", "exampleEn": "The legal & contracts team reviewed the binding before making a decision.", "exampleVi": "", "collocations": ["binding policy"], "synonyms": []},
+            {"id": "legal-legitimate", "word": "Legitimate", "ipa": "—", "pos": "Adjective", "category": "Legal & Contracts", "defEn": "A business term referring to hợp pháp in a professional context.", "defVi": "hợp pháp", "exampleEn": "The legal & contracts team reviewed the legitimate before making a decision.", "exampleVi": "", "collocations": ["legitimate policy"], "synonyms": []},
+            {"id": "marketing-marketing", "word": "Marketing", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to tiếp thị in a professional context.", "defVi": "tiếp thị", "exampleEn": "The marketing & sales team reviewed the marketing before making a decision.", "exampleVi": "", "collocations": ["marketing policy"], "synonyms": []},
+            {"id": "marketing-sales", "word": "Sales", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to doanh số in a professional context.", "defVi": "doanh số", "exampleEn": "The marketing & sales team reviewed the sales before making a decision.", "exampleVi": "", "collocations": ["sales policy"], "synonyms": []},
+            {"id": "marketing-campaign", "word": "Campaign", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to chiến dịch in a professional context.", "defVi": "chiến dịch", "exampleEn": "The marketing & sales team reviewed the campaign before making a decision.", "exampleVi": "", "collocations": ["campaign policy"], "synonyms": []},
+            {"id": "marketing-advertising", "word": "Advertising", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to quảng cáo in a professional context.", "defVi": "quảng cáo", "exampleEn": "The marketing & sales team reviewed the advertising before making a decision.", "exampleVi": "", "collocations": ["advertising policy"], "synonyms": []},
+            {"id": "marketing-promotion", "word": "Promotion", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to khuyến mãi in a professional context.", "defVi": "khuyến mãi", "exampleEn": "The marketing & sales team reviewed the promotion before making a decision.", "exampleVi": "", "collocations": ["promotion policy"], "synonyms": []},
+            {"id": "marketing-discount", "word": "Discount", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to giảm giá in a professional context.", "defVi": "giảm giá", "exampleEn": "The marketing & sales team reviewed the discount before making a decision.", "exampleVi": "", "collocations": ["discount policy"], "synonyms": []},
+            {"id": "marketing-consumer", "word": "Consumer", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to người tiêu dùng in a professional context.", "defVi": "người tiêu dùng", "exampleEn": "The marketing & sales team reviewed the consumer before making a decision.", "exampleVi": "", "collocations": ["consumer policy"], "synonyms": []},
+            {"id": "marketing-customer", "word": "Customer", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to khách hàng in a professional context.", "defVi": "khách hàng", "exampleEn": "The marketing & sales team reviewed the customer before making a decision.", "exampleVi": "", "collocations": ["customer policy"], "synonyms": []},
+            {"id": "marketing-client", "word": "Client", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to khách hàng in a professional context.", "defVi": "khách hàng", "exampleEn": "The marketing & sales team reviewed the client before making a decision.", "exampleVi": "", "collocations": ["client policy"], "synonyms": []},
+            {"id": "marketing-audience", "word": "Audience", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to đối tượng khán giả in a professional context.", "defVi": "đối tượng khán giả", "exampleEn": "The marketing & sales team reviewed the audience before making a decision.", "exampleVi": "", "collocations": ["audience policy"], "synonyms": []},
+            {"id": "marketing-target-market", "word": "Target Market", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to thị trường mục tiêu in a professional context.", "defVi": "thị trường mục tiêu", "exampleEn": "The marketing & sales team reviewed the target market before making a decision.", "exampleVi": "", "collocations": ["target market policy"], "synonyms": []},
+            {"id": "marketing-market-share", "word": "Market Share", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to thị phần in a professional context.", "defVi": "thị phần", "exampleEn": "The marketing & sales team reviewed the market share before making a decision.", "exampleVi": "", "collocations": ["market share policy"], "synonyms": []},
+            {"id": "marketing-market-research", "word": "Market Research", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to nghiên cứu thị trường in a professional context.", "defVi": "nghiên cứu thị trường", "exampleEn": "The marketing & sales team reviewed the market research before making a decision.", "exampleVi": "", "collocations": ["market research policy"], "synonyms": []},
+            {"id": "marketing-survey", "word": "Survey", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to khảo sát in a professional context.", "defVi": "khảo sát", "exampleEn": "The marketing & sales team reviewed the survey before making a decision.", "exampleVi": "", "collocations": ["survey policy"], "synonyms": []},
+            {"id": "marketing-feedback", "word": "Feedback", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to phản hồi in a professional context.", "defVi": "phản hồi", "exampleEn": "The marketing & sales team reviewed the feedback before making a decision.", "exampleVi": "", "collocations": ["feedback policy"], "synonyms": []},
+            {"id": "marketing-brand", "word": "Brand", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to thương hiệu in a professional context.", "defVi": "thương hiệu", "exampleEn": "The marketing & sales team reviewed the brand before making a decision.", "exampleVi": "", "collocations": ["brand policy"], "synonyms": []},
+            {"id": "marketing-branding", "word": "Branding", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to xây dựng thương hiệu in a professional context.", "defVi": "xây dựng thương hiệu", "exampleEn": "The marketing & sales team reviewed the branding before making a decision.", "exampleVi": "", "collocations": ["branding policy"], "synonyms": []},
+            {"id": "marketing-product", "word": "Product", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to sản phẩm in a professional context.", "defVi": "sản phẩm", "exampleEn": "The marketing & sales team reviewed the product before making a decision.", "exampleVi": "", "collocations": ["product policy"], "synonyms": []},
+            {"id": "marketing-launch", "word": "Launch", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to ra mắt in a professional context.", "defVi": "ra mắt", "exampleEn": "The marketing & sales team reviewed the launch before making a decision.", "exampleVi": "", "collocations": ["launch policy"], "synonyms": []},
+            {"id": "marketing-feature", "word": "Feature", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to tính năng in a professional context.", "defVi": "tính năng", "exampleEn": "The marketing & sales team reviewed the feature before making a decision.", "exampleVi": "", "collocations": ["feature policy"], "synonyms": []},
+            {"id": "marketing-benefit", "word": "Benefit", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to lợi ích in a professional context.", "defVi": "lợi ích", "exampleEn": "The marketing & sales team reviewed the benefit before making a decision.", "exampleVi": "", "collocations": ["benefit policy"], "synonyms": []},
+            {"id": "marketing-demand", "word": "Demand", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to nhu cầu in a professional context.", "defVi": "nhu cầu", "exampleEn": "The marketing & sales team reviewed the demand before making a decision.", "exampleVi": "", "collocations": ["demand policy"], "synonyms": []},
+            {"id": "marketing-supply", "word": "Supply", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to nguồn cung in a professional context.", "defVi": "nguồn cung", "exampleEn": "The marketing & sales team reviewed the supply before making a decision.", "exampleVi": "", "collocations": ["supply policy"], "synonyms": []},
+            {"id": "marketing-competitor", "word": "Competitor", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to đối thủ cạnh tranh in a professional context.", "defVi": "đối thủ cạnh tranh", "exampleEn": "The marketing & sales team reviewed the competitor before making a decision.", "exampleVi": "", "collocations": ["competitor policy"], "synonyms": []},
+            {"id": "marketing-competitive", "word": "Competitive", "ipa": "—", "pos": "Adjective", "category": "Marketing & Sales", "defEn": "A business term referring to có tính cạnh tranh in a professional context.", "defVi": "có tính cạnh tranh", "exampleEn": "The marketing & sales team reviewed the competitive before making a decision.", "exampleVi": "", "collocations": ["competitive policy"], "synonyms": []},
+            {"id": "marketing-strategy", "word": "Strategy", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to chiến lược in a professional context.", "defVi": "chiến lược", "exampleEn": "The marketing & sales team reviewed the strategy before making a decision.", "exampleVi": "", "collocations": ["strategy policy"], "synonyms": []},
+            {"id": "marketing-positioning", "word": "Positioning", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to định vị in a professional context.", "defVi": "định vị", "exampleEn": "The marketing & sales team reviewed the positioning before making a decision.", "exampleVi": "", "collocations": ["positioning policy"], "synonyms": []},
+            {"id": "marketing-segment", "word": "Segment", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to phân khúc in a professional context.", "defVi": "phân khúc", "exampleEn": "The marketing & sales team reviewed the segment before making a decision.", "exampleVi": "", "collocations": ["segment policy"], "synonyms": []},
+            {"id": "marketing-trend", "word": "Trend", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to xu hướng in a professional context.", "defVi": "xu hướng", "exampleEn": "The marketing & sales team reviewed the trend before making a decision.", "exampleVi": "", "collocations": ["trend policy"], "synonyms": []},
+            {"id": "marketing-purchase", "word": "Purchase", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to mua hàng in a professional context.", "defVi": "mua hàng", "exampleEn": "The marketing & sales team reviewed the purchase before making a decision.", "exampleVi": "", "collocations": ["purchase policy"], "synonyms": []},
+            {"id": "marketing-retail", "word": "Retail", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to bán lẻ in a professional context.", "defVi": "bán lẻ", "exampleEn": "The marketing & sales team reviewed the retail before making a decision.", "exampleVi": "", "collocations": ["retail policy"], "synonyms": []},
+            {"id": "marketing-wholesale", "word": "Wholesale", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to bán sỉ in a professional context.", "defVi": "bán sỉ", "exampleEn": "The marketing & sales team reviewed the wholesale before making a decision.", "exampleVi": "", "collocations": ["wholesale policy"], "synonyms": []},
+            {"id": "marketing-retailer", "word": "Retailer", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to nhà bán lẻ in a professional context.", "defVi": "nhà bán lẻ", "exampleEn": "The marketing & sales team reviewed the retailer before making a decision.", "exampleVi": "", "collocations": ["retailer policy"], "synonyms": []},
+            {"id": "marketing-distributor", "word": "Distributor", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to nhà phân phối in a professional context.", "defVi": "nhà phân phối", "exampleEn": "The marketing & sales team reviewed the distributor before making a decision.", "exampleVi": "", "collocations": ["distributor policy"], "synonyms": []},
+            {"id": "marketing-vendor", "word": "Vendor", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to nhà cung cấp in a professional context.", "defVi": "nhà cung cấp", "exampleEn": "The marketing & sales team reviewed the vendor before making a decision.", "exampleVi": "", "collocations": ["vendor policy"], "synonyms": []},
+            {"id": "marketing-merchandise", "word": "Merchandise", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to hàng hóa in a professional context.", "defVi": "hàng hóa", "exampleEn": "The marketing & sales team reviewed the merchandise before making a decision.", "exampleVi": "", "collocations": ["merchandise policy"], "synonyms": []},
+            {"id": "marketing-catalog", "word": "Catalog", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to danh mục sản phẩm in a professional context.", "defVi": "danh mục sản phẩm", "exampleEn": "The marketing & sales team reviewed the catalog before making a decision.", "exampleVi": "", "collocations": ["catalog policy"], "synonyms": []},
+            {"id": "marketing-brochure", "word": "Brochure", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to tờ quảng cáo in a professional context.", "defVi": "tờ quảng cáo", "exampleEn": "The marketing & sales team reviewed the brochure before making a decision.", "exampleVi": "", "collocations": ["brochure policy"], "synonyms": []},
+            {"id": "marketing-newsletter", "word": "Newsletter", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to bản tin in a professional context.", "defVi": "bản tin", "exampleEn": "The marketing & sales team reviewed the newsletter before making a decision.", "exampleVi": "", "collocations": ["newsletter policy"], "synonyms": []},
+            {"id": "marketing-media", "word": "Media", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to truyền thông in a professional context.", "defVi": "truyền thông", "exampleEn": "The marketing & sales team reviewed the media before making a decision.", "exampleVi": "", "collocations": ["media policy"], "synonyms": []},
+            {"id": "marketing-sponsor", "word": "Sponsor", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to nhà tài trợ in a professional context.", "defVi": "nhà tài trợ", "exampleEn": "The marketing & sales team reviewed the sponsor before making a decision.", "exampleVi": "", "collocations": ["sponsor policy"], "synonyms": []},
+            {"id": "marketing-endorsement", "word": "Endorsement", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to sự chứng thực in a professional context.", "defVi": "sự chứng thực", "exampleEn": "The marketing & sales team reviewed the endorsement before making a decision.", "exampleVi": "", "collocations": ["endorsement policy"], "synonyms": []},
+            {"id": "marketing-persuade", "word": "Persuade", "ipa": "—", "pos": "Verb", "category": "Marketing & Sales", "defEn": "A business term referring to thuyết phục in a professional context.", "defVi": "thuyết phục", "exampleEn": "The marketing & sales team reviewed the persuade before making a decision.", "exampleVi": "", "collocations": ["persuade policy"], "synonyms": []},
+            {"id": "marketing-persuasive", "word": "Persuasive", "ipa": "—", "pos": "Adjective", "category": "Marketing & Sales", "defEn": "A business term referring to có sức thuyết phục in a professional context.", "defVi": "có sức thuyết phục", "exampleEn": "The marketing & sales team reviewed the persuasive before making a decision.", "exampleVi": "", "collocations": ["persuasive policy"], "synonyms": []},
+            {"id": "marketing-conversion", "word": "Conversion", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to tỷ lệ chuyển đổi in a professional context.", "defVi": "tỷ lệ chuyển đổi", "exampleEn": "The marketing & sales team reviewed the conversion before making a decision.", "exampleVi": "", "collocations": ["conversion policy"], "synonyms": []},
+            {"id": "marketing-lead", "word": "Lead", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to khách hàng tiềm năng in a professional context.", "defVi": "khách hàng tiềm năng", "exampleEn": "The marketing & sales team reviewed the lead before making a decision.", "exampleVi": "", "collocations": ["lead policy"], "synonyms": []},
+            {"id": "marketing-prospect", "word": "Prospect", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to khách hàng triển vọng in a professional context.", "defVi": "khách hàng triển vọng", "exampleEn": "The marketing & sales team reviewed the prospect before making a decision.", "exampleVi": "", "collocations": ["prospect policy"], "synonyms": []},
+            {"id": "marketing-revenue", "word": "Revenue", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to doanh thu in a professional context.", "defVi": "doanh thu", "exampleEn": "The marketing & sales team reviewed the revenue before making a decision.", "exampleVi": "", "collocations": ["revenue policy"], "synonyms": []},
+            {"id": "marketing-quota", "word": "Quota", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to chỉ tiêu doanh số in a professional context.", "defVi": "chỉ tiêu doanh số", "exampleEn": "The marketing & sales team reviewed the quota before making a decision.", "exampleVi": "", "collocations": ["quota policy"], "synonyms": []},
+            {"id": "marketing-negotiation", "word": "Negotiation", "ipa": "—", "pos": "Noun", "category": "Marketing & Sales", "defEn": "A business term referring to đàm phán in a professional context.", "defVi": "đàm phán", "exampleEn": "The marketing & sales team reviewed the negotiation before making a decision.", "exampleVi": "", "collocations": ["negotiation policy"], "synonyms": []},
+            {"id": "human-recruitment", "word": "Recruitment", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to tuyển dụng in a professional context.", "defVi": "tuyển dụng", "exampleEn": "The human resources team reviewed the recruitment before making a decision.", "exampleVi": "", "collocations": ["recruitment policy"], "synonyms": []},
+            {"id": "human-recruit", "word": "Recruit", "ipa": "—", "pos": "Verb", "category": "Human Resources", "defEn": "A business term referring to chiêu mộ in a professional context.", "defVi": "chiêu mộ", "exampleEn": "The human resources team reviewed the recruit before making a decision.", "exampleVi": "", "collocations": ["recruit policy"], "synonyms": []},
+            {"id": "human-applicant", "word": "Applicant", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to ứng viên in a professional context.", "defVi": "ứng viên", "exampleEn": "The human resources team reviewed the applicant before making a decision.", "exampleVi": "", "collocations": ["applicant policy"], "synonyms": []},
+            {"id": "human-candidate", "word": "Candidate", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to ứng viên in a professional context.", "defVi": "ứng viên", "exampleEn": "The human resources team reviewed the candidate before making a decision.", "exampleVi": "", "collocations": ["candidate policy"], "synonyms": []},
+            {"id": "human-vacancy", "word": "Vacancy", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to vị trí trống in a professional context.", "defVi": "vị trí trống", "exampleEn": "The human resources team reviewed the vacancy before making a decision.", "exampleVi": "", "collocations": ["vacancy policy"], "synonyms": []},
+            {"id": "human-resume", "word": "Resume", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to sơ yếu lý lịch in a professional context.", "defVi": "sơ yếu lý lịch", "exampleEn": "The human resources team reviewed the resume before making a decision.", "exampleVi": "", "collocations": ["resume policy"], "synonyms": []},
+            {"id": "human-curriculum-vitae", "word": "Curriculum Vitae", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to cv in a professional context.", "defVi": "CV", "exampleEn": "The human resources team reviewed the curriculum vitae before making a decision.", "exampleVi": "", "collocations": ["curriculum vitae policy"], "synonyms": []},
+            {"id": "human-interview", "word": "Interview", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to phỏng vấn in a professional context.", "defVi": "phỏng vấn", "exampleEn": "The human resources team reviewed the interview before making a decision.", "exampleVi": "", "collocations": ["interview policy"], "synonyms": []},
+            {"id": "human-qualification", "word": "Qualification", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to trình độ chuyên môn in a professional context.", "defVi": "trình độ chuyên môn", "exampleEn": "The human resources team reviewed the qualification before making a decision.", "exampleVi": "", "collocations": ["qualification policy"], "synonyms": []},
+            {"id": "human-credential", "word": "Credential", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to chứng chỉ in a professional context.", "defVi": "chứng chỉ", "exampleEn": "The human resources team reviewed the credential before making a decision.", "exampleVi": "", "collocations": ["credential policy"], "synonyms": []},
+            {"id": "human-experience", "word": "Experience", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to kinh nghiệm in a professional context.", "defVi": "kinh nghiệm", "exampleEn": "The human resources team reviewed the experience before making a decision.", "exampleVi": "", "collocations": ["experience policy"], "synonyms": []},
+            {"id": "human-orientation", "word": "Orientation", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to định hướng nhân viên in a professional context.", "defVi": "định hướng nhân viên", "exampleEn": "The human resources team reviewed the orientation before making a decision.", "exampleVi": "", "collocations": ["orientation policy"], "synonyms": []},
+            {"id": "human-onboarding", "word": "Onboarding", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to quy trình tiếp nhận in a professional context.", "defVi": "quy trình tiếp nhận", "exampleEn": "The human resources team reviewed the onboarding before making a decision.", "exampleVi": "", "collocations": ["onboarding policy"], "synonyms": []},
+            {"id": "human-training", "word": "Training", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to đào tạo in a professional context.", "defVi": "đào tạo", "exampleEn": "The human resources team reviewed the training before making a decision.", "exampleVi": "", "collocations": ["training policy"], "synonyms": []},
+            {"id": "human-workshop", "word": "Workshop", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to hội thảo thực hành in a professional context.", "defVi": "hội thảo thực hành", "exampleEn": "The human resources team reviewed the workshop before making a decision.", "exampleVi": "", "collocations": ["workshop policy"], "synonyms": []},
+            {"id": "human-development", "word": "Development", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to phát triển in a professional context.", "defVi": "phát triển", "exampleEn": "The human resources team reviewed the development before making a decision.", "exampleVi": "", "collocations": ["development policy"], "synonyms": []},
+            {"id": "human-promotion", "word": "Promotion", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to thăng chức in a professional context.", "defVi": "thăng chức", "exampleEn": "The human resources team reviewed the promotion before making a decision.", "exampleVi": "", "collocations": ["promotion policy"], "synonyms": []},
+            {"id": "human-demotion", "word": "Demotion", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to giáng chức in a professional context.", "defVi": "giáng chức", "exampleEn": "The human resources team reviewed the demotion before making a decision.", "exampleVi": "", "collocations": ["demotion policy"], "synonyms": []},
+            {"id": "human-transfer", "word": "Transfer", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to điều chuyển in a professional context.", "defVi": "điều chuyển", "exampleEn": "The human resources team reviewed the transfer before making a decision.", "exampleVi": "", "collocations": ["transfer policy"], "synonyms": []},
+            {"id": "human-resignation", "word": "Resignation", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to đơn từ chức in a professional context.", "defVi": "đơn từ chức", "exampleEn": "The human resources team reviewed the resignation before making a decision.", "exampleVi": "", "collocations": ["resignation policy"], "synonyms": []},
+            {"id": "human-retirement", "word": "Retirement", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to sự nghỉ hưu in a professional context.", "defVi": "sự nghỉ hưu", "exampleEn": "The human resources team reviewed the retirement before making a decision.", "exampleVi": "", "collocations": ["retirement policy"], "synonyms": []},
+            {"id": "human-termination", "word": "Termination", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to chấm dứt hợp đồng in a professional context.", "defVi": "chấm dứt hợp đồng", "exampleEn": "The human resources team reviewed the termination before making a decision.", "exampleVi": "", "collocations": ["termination policy"], "synonyms": []},
+            {"id": "human-dismissal", "word": "Dismissal", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to sa thải in a professional context.", "defVi": "sa thải", "exampleEn": "The human resources team reviewed the dismissal before making a decision.", "exampleVi": "", "collocations": ["dismissal policy"], "synonyms": []},
+            {"id": "human-layoff", "word": "Layoff", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to cắt giảm nhân sự in a professional context.", "defVi": "cắt giảm nhân sự", "exampleEn": "The human resources team reviewed the layoff before making a decision.", "exampleVi": "", "collocations": ["layoff policy"], "synonyms": []},
+            {"id": "human-redundancy", "word": "Redundancy", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to vị trí dư thừa in a professional context.", "defVi": "vị trí dư thừa", "exampleEn": "The human resources team reviewed the redundancy before making a decision.", "exampleVi": "", "collocations": ["redundancy policy"], "synonyms": []},
+            {"id": "human-employee", "word": "Employee", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to nhân viên in a professional context.", "defVi": "nhân viên", "exampleEn": "The human resources team reviewed the employee before making a decision.", "exampleVi": "", "collocations": ["employee policy"], "synonyms": []},
+            {"id": "human-employer", "word": "Employer", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to người sử dụng lao động in a professional context.", "defVi": "người sử dụng lao động", "exampleEn": "The human resources team reviewed the employer before making a decision.", "exampleVi": "", "collocations": ["employer policy"], "synonyms": []},
+            {"id": "human-personnel", "word": "Personnel", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to nhân sự in a professional context.", "defVi": "nhân sự", "exampleEn": "The human resources team reviewed the personnel before making a decision.", "exampleVi": "", "collocations": ["personnel policy"], "synonyms": []},
+            {"id": "human-workforce", "word": "Workforce", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to lực lượng lao động in a professional context.", "defVi": "lực lượng lao động", "exampleEn": "The human resources team reviewed the workforce before making a decision.", "exampleVi": "", "collocations": ["workforce policy"], "synonyms": []},
+            {"id": "human-staff", "word": "Staff", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to đội ngũ nhân viên in a professional context.", "defVi": "đội ngũ nhân viên", "exampleEn": "The human resources team reviewed the staff before making a decision.", "exampleVi": "", "collocations": ["staff policy"], "synonyms": []},
+            {"id": "human-colleague", "word": "Colleague", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to đồng nghiệp in a professional context.", "defVi": "đồng nghiệp", "exampleEn": "The human resources team reviewed the colleague before making a decision.", "exampleVi": "", "collocations": ["colleague policy"], "synonyms": []},
+            {"id": "human-supervisor", "word": "Supervisor", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to người giám sát in a professional context.", "defVi": "người giám sát", "exampleEn": "The human resources team reviewed the supervisor before making a decision.", "exampleVi": "", "collocations": ["supervisor policy"], "synonyms": []},
+            {"id": "human-manager", "word": "Manager", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to quản lý in a professional context.", "defVi": "quản lý", "exampleEn": "The human resources team reviewed the manager before making a decision.", "exampleVi": "", "collocations": ["manager policy"], "synonyms": []},
+            {"id": "human-appraisal", "word": "Appraisal", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to đánh giá in a professional context.", "defVi": "đánh giá", "exampleEn": "The human resources team reviewed the appraisal before making a decision.", "exampleVi": "", "collocations": ["appraisal policy"], "synonyms": []},
+            {"id": "human-performance-review", "word": "Performance Review", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to đánh giá hiệu suất in a professional context.", "defVi": "đánh giá hiệu suất", "exampleEn": "The human resources team reviewed the performance review before making a decision.", "exampleVi": "", "collocations": ["performance review policy"], "synonyms": []},
+            {"id": "human-productivity", "word": "Productivity", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to năng suất in a professional context.", "defVi": "năng suất", "exampleEn": "The human resources team reviewed the productivity before making a decision.", "exampleVi": "", "collocations": ["productivity policy"], "synonyms": []},
+            {"id": "human-compensation", "word": "Compensation", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to thù lao in a professional context.", "defVi": "thù lao", "exampleEn": "The human resources team reviewed the compensation before making a decision.", "exampleVi": "", "collocations": ["compensation policy"], "synonyms": []},
+            {"id": "human-benefit", "word": "Benefit", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to phúc lợi in a professional context.", "defVi": "phúc lợi", "exampleEn": "The human resources team reviewed the benefit before making a decision.", "exampleVi": "", "collocations": ["benefit policy"], "synonyms": []},
+            {"id": "human-allowance", "word": "Allowance", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to phụ cấp in a professional context.", "defVi": "phụ cấp", "exampleEn": "The human resources team reviewed the allowance before making a decision.", "exampleVi": "", "collocations": ["allowance policy"], "synonyms": []},
+            {"id": "human-bonus", "word": "Bonus", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to tiền thưởng in a professional context.", "defVi": "tiền thưởng", "exampleEn": "The human resources team reviewed the bonus before making a decision.", "exampleVi": "", "collocations": ["bonus policy"], "synonyms": []},
+            {"id": "human-incentive", "word": "Incentive", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to động lực khuyến khích in a professional context.", "defVi": "động lực khuyến khích", "exampleEn": "The human resources team reviewed the incentive before making a decision.", "exampleVi": "", "collocations": ["incentive policy"], "synonyms": []},
+            {"id": "human-pension", "word": "Pension", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to lương hưu in a professional context.", "defVi": "lương hưu", "exampleEn": "The human resources team reviewed the pension before making a decision.", "exampleVi": "", "collocations": ["pension policy"], "synonyms": []},
+            {"id": "human-insurance", "word": "Insurance", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to bảo hiểm in a professional context.", "defVi": "bảo hiểm", "exampleEn": "The human resources team reviewed the insurance before making a decision.", "exampleVi": "", "collocations": ["insurance policy"], "synonyms": []},
+            {"id": "human-leave", "word": "Leave", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to nghỉ phép in a professional context.", "defVi": "nghỉ phép", "exampleEn": "The human resources team reviewed the leave before making a decision.", "exampleVi": "", "collocations": ["leave policy"], "synonyms": []},
+            {"id": "human-absence", "word": "Absence", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to sự vắng mặt in a professional context.", "defVi": "sự vắng mặt", "exampleEn": "The human resources team reviewed the absence before making a decision.", "exampleVi": "", "collocations": ["absence policy"], "synonyms": []},
+            {"id": "human-attendance", "word": "Attendance", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to sự có mặt in a professional context.", "defVi": "sự có mặt", "exampleEn": "The human resources team reviewed the attendance before making a decision.", "exampleVi": "", "collocations": ["attendance policy"], "synonyms": []},
+            {"id": "human-payroll", "word": "Payroll", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to bảng lương in a professional context.", "defVi": "bảng lương", "exampleEn": "The human resources team reviewed the payroll before making a decision.", "exampleVi": "", "collocations": ["payroll policy"], "synonyms": []},
+            {"id": "human-workplace", "word": "Workplace", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to nơi làm việc in a professional context.", "defVi": "nơi làm việc", "exampleEn": "The human resources team reviewed the workplace before making a decision.", "exampleVi": "", "collocations": ["workplace policy"], "synonyms": []},
+            {"id": "human-morale", "word": "Morale", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to tinh thần làm việc in a professional context.", "defVi": "tinh thần làm việc", "exampleEn": "The human resources team reviewed the morale before making a decision.", "exampleVi": "", "collocations": ["morale policy"], "synonyms": []},
+            {"id": "human-grievance", "word": "Grievance", "ipa": "—", "pos": "Noun", "category": "Human Resources", "defEn": "A business term referring to khiếu nại của nhân viên in a professional context.", "defVi": "khiếu nại của nhân viên", "exampleEn": "The human resources team reviewed the grievance before making a decision.", "exampleVi": "", "collocations": ["grievance policy"], "synonyms": []},
+            {"id": "operations-inventory", "word": "Inventory", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to hàng tồn kho in a professional context.", "defVi": "hàng tồn kho", "exampleEn": "The operations & logistics team reviewed the inventory before making a decision.", "exampleVi": "", "collocations": ["inventory policy"], "synonyms": []},
+            {"id": "operations-warehouse", "word": "Warehouse", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to kho hàng in a professional context.", "defVi": "kho hàng", "exampleEn": "The operations & logistics team reviewed the warehouse before making a decision.", "exampleVi": "", "collocations": ["warehouse policy"], "synonyms": []},
+            {"id": "operations-shipment", "word": "Shipment", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to lô hàng vận chuyển in a professional context.", "defVi": "lô hàng vận chuyển", "exampleEn": "The operations & logistics team reviewed the shipment before making a decision.", "exampleVi": "", "collocations": ["shipment policy"], "synonyms": []},
+            {"id": "operations-shipping", "word": "Shipping", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to vận chuyển in a professional context.", "defVi": "vận chuyển", "exampleEn": "The operations & logistics team reviewed the shipping before making a decision.", "exampleVi": "", "collocations": ["shipping policy"], "synonyms": []},
+            {"id": "operations-freight", "word": "Freight", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to hàng hóa vận tải in a professional context.", "defVi": "hàng hóa vận tải", "exampleEn": "The operations & logistics team reviewed the freight before making a decision.", "exampleVi": "", "collocations": ["freight policy"], "synonyms": []},
+            {"id": "operations-cargo", "word": "Cargo", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to hàng hóa in a professional context.", "defVi": "hàng hóa", "exampleEn": "The operations & logistics team reviewed the cargo before making a decision.", "exampleVi": "", "collocations": ["cargo policy"], "synonyms": []},
+            {"id": "operations-consignment", "word": "Consignment", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to lô hàng ký gửi in a professional context.", "defVi": "lô hàng ký gửi", "exampleEn": "The operations & logistics team reviewed the consignment before making a decision.", "exampleVi": "", "collocations": ["consignment policy"], "synonyms": []},
+            {"id": "operations-dispatch", "word": "Dispatch", "ipa": "—", "pos": "Verb", "category": "Operations & Logistics", "defEn": "A business term referring to gửi hàng in a professional context.", "defVi": "gửi hàng", "exampleEn": "The operations & logistics team reviewed the dispatch before making a decision.", "exampleVi": "", "collocations": ["dispatch policy"], "synonyms": []},
+            {"id": "operations-delivery", "word": "Delivery", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to giao hàng in a professional context.", "defVi": "giao hàng", "exampleEn": "The operations & logistics team reviewed the delivery before making a decision.", "exampleVi": "", "collocations": ["delivery policy"], "synonyms": []},
+            {"id": "operations-distribution", "word": "Distribution", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to phân phối in a professional context.", "defVi": "phân phối", "exampleEn": "The operations & logistics team reviewed the distribution before making a decision.", "exampleVi": "", "collocations": ["distribution policy"], "synonyms": []},
+            {"id": "operations-logistics", "word": "Logistics", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to hậu cần in a professional context.", "defVi": "hậu cần", "exampleEn": "The operations & logistics team reviewed the logistics before making a decision.", "exampleVi": "", "collocations": ["logistics policy"], "synonyms": []},
+            {"id": "operations-supplier", "word": "Supplier", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to nhà cung cấp in a professional context.", "defVi": "nhà cung cấp", "exampleEn": "The operations & logistics team reviewed the supplier before making a decision.", "exampleVi": "", "collocations": ["supplier policy"], "synonyms": []},
+            {"id": "operations-procurement", "word": "Procurement", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to mua sắm in a professional context.", "defVi": "mua sắm", "exampleEn": "The operations & logistics team reviewed the procurement before making a decision.", "exampleVi": "", "collocations": ["procurement policy"], "synonyms": []},
+            {"id": "operations-purchase-order", "word": "Purchase Order", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to đơn đặt hàng in a professional context.", "defVi": "đơn đặt hàng", "exampleEn": "The operations & logistics team reviewed the purchase order before making a decision.", "exampleVi": "", "collocations": ["purchase order policy"], "synonyms": []},
+            {"id": "operations-order", "word": "Order", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to đơn hàng in a professional context.", "defVi": "đơn hàng", "exampleEn": "The operations & logistics team reviewed the order before making a decision.", "exampleVi": "", "collocations": ["order policy"], "synonyms": []},
+            {"id": "operations-stocktaking", "word": "Stocktaking", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to kiểm kê in a professional context.", "defVi": "kiểm kê", "exampleEn": "The operations & logistics team reviewed the stocktaking before making a decision.", "exampleVi": "", "collocations": ["stocktaking policy"], "synonyms": []},
+            {"id": "operations-storage", "word": "Storage", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to lưu kho in a professional context.", "defVi": "lưu kho", "exampleEn": "The operations & logistics team reviewed the storage before making a decision.", "exampleVi": "", "collocations": ["storage policy"], "synonyms": []},
+            {"id": "operations-capacity", "word": "Capacity", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to công suất in a professional context.", "defVi": "công suất", "exampleEn": "The operations & logistics team reviewed the capacity before making a decision.", "exampleVi": "", "collocations": ["capacity policy"], "synonyms": []},
+            {"id": "operations-shortage", "word": "Shortage", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to sự thiếu hụt in a professional context.", "defVi": "sự thiếu hụt", "exampleEn": "The operations & logistics team reviewed the shortage before making a decision.", "exampleVi": "", "collocations": ["shortage policy"], "synonyms": []},
+            {"id": "operations-surplus", "word": "Surplus", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to lượng dư thừa in a professional context.", "defVi": "lượng dư thừa", "exampleEn": "The operations & logistics team reviewed the surplus before making a decision.", "exampleVi": "", "collocations": ["surplus policy"], "synonyms": []},
+            {"id": "operations-demand", "word": "Demand", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to nhu cầu in a professional context.", "defVi": "nhu cầu", "exampleEn": "The operations & logistics team reviewed the demand before making a decision.", "exampleVi": "", "collocations": ["demand policy"], "synonyms": []},
+            {"id": "operations-forecast", "word": "Forecast", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to dự báo in a professional context.", "defVi": "dự báo", "exampleEn": "The operations & logistics team reviewed the forecast before making a decision.", "exampleVi": "", "collocations": ["forecast policy"], "synonyms": []},
+            {"id": "operations-schedule", "word": "Schedule", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to lịch trình in a professional context.", "defVi": "lịch trình", "exampleEn": "The operations & logistics team reviewed the schedule before making a decision.", "exampleVi": "", "collocations": ["schedule policy"], "synonyms": []},
+            {"id": "operations-deadline", "word": "Deadline", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to hạn chót in a professional context.", "defVi": "hạn chót", "exampleEn": "The operations & logistics team reviewed the deadline before making a decision.", "exampleVi": "", "collocations": ["deadline policy"], "synonyms": []},
+            {"id": "operations-route", "word": "Route", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to tuyến đường in a professional context.", "defVi": "tuyến đường", "exampleEn": "The operations & logistics team reviewed the route before making a decision.", "exampleVi": "", "collocations": ["route policy"], "synonyms": []},
+            {"id": "operations-transportation", "word": "Transportation", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to vận tải in a professional context.", "defVi": "vận tải", "exampleEn": "The operations & logistics team reviewed the transportation before making a decision.", "exampleVi": "", "collocations": ["transportation policy"], "synonyms": []},
+            {"id": "operations-carrier", "word": "Carrier", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to đơn vị vận chuyển in a professional context.", "defVi": "đơn vị vận chuyển", "exampleEn": "The operations & logistics team reviewed the carrier before making a decision.", "exampleVi": "", "collocations": ["carrier policy"], "synonyms": []},
+            {"id": "operations-fleet", "word": "Fleet", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to đội xe in a professional context.", "defVi": "đội xe", "exampleEn": "The operations & logistics team reviewed the fleet before making a decision.", "exampleVi": "", "collocations": ["fleet policy"], "synonyms": []},
+            {"id": "operations-vehicle", "word": "Vehicle", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to phương tiện in a professional context.", "defVi": "phương tiện", "exampleEn": "The operations & logistics team reviewed the vehicle before making a decision.", "exampleVi": "", "collocations": ["vehicle policy"], "synonyms": []},
+            {"id": "operations-maintenance", "word": "Maintenance", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to bảo trì in a professional context.", "defVi": "bảo trì", "exampleEn": "The operations & logistics team reviewed the maintenance before making a decision.", "exampleVi": "", "collocations": ["maintenance policy"], "synonyms": []},
+            {"id": "operations-equipment", "word": "Equipment", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to thiết bị in a professional context.", "defVi": "thiết bị", "exampleEn": "The operations & logistics team reviewed the equipment before making a decision.", "exampleVi": "", "collocations": ["equipment policy"], "synonyms": []},
+            {"id": "operations-facility", "word": "Facility", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to cơ sở vật chất in a professional context.", "defVi": "cơ sở vật chất", "exampleEn": "The operations & logistics team reviewed the facility before making a decision.", "exampleVi": "", "collocations": ["facility policy"], "synonyms": []},
+            {"id": "operations-manufacturing", "word": "Manufacturing", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to sản xuất in a professional context.", "defVi": "sản xuất", "exampleEn": "The operations & logistics team reviewed the manufacturing before making a decision.", "exampleVi": "", "collocations": ["manufacturing policy"], "synonyms": []},
+            {"id": "operations-production", "word": "Production", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to sản lượng in a professional context.", "defVi": "sản lượng", "exampleEn": "The operations & logistics team reviewed the production before making a decision.", "exampleVi": "", "collocations": ["production policy"], "synonyms": []},
+            {"id": "operations-assembly", "word": "Assembly", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to lắp ráp in a professional context.", "defVi": "lắp ráp", "exampleEn": "The operations & logistics team reviewed the assembly before making a decision.", "exampleVi": "", "collocations": ["assembly policy"], "synonyms": []},
+            {"id": "operations-raw-material", "word": "Raw Material", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to nguyên liệu thô in a professional context.", "defVi": "nguyên liệu thô", "exampleEn": "The operations & logistics team reviewed the raw material before making a decision.", "exampleVi": "", "collocations": ["raw material policy"], "synonyms": []},
+            {"id": "operations-component", "word": "Component", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to linh kiện in a professional context.", "defVi": "linh kiện", "exampleEn": "The operations & logistics team reviewed the component before making a decision.", "exampleVi": "", "collocations": ["component policy"], "synonyms": []},
+            {"id": "operations-quality-control", "word": "Quality Control", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to kiểm soát chất lượng in a professional context.", "defVi": "kiểm soát chất lượng", "exampleEn": "The operations & logistics team reviewed the quality control before making a decision.", "exampleVi": "", "collocations": ["quality control policy"], "synonyms": []},
+            {"id": "operations-inspection", "word": "Inspection", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to kiểm tra in a professional context.", "defVi": "kiểm tra", "exampleEn": "The operations & logistics team reviewed the inspection before making a decision.", "exampleVi": "", "collocations": ["inspection policy"], "synonyms": []},
+            {"id": "operations-defect", "word": "Defect", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to lỗi sản phẩm in a professional context.", "defVi": "lỗi sản phẩm", "exampleEn": "The operations & logistics team reviewed the defect before making a decision.", "exampleVi": "", "collocations": ["defect policy"], "synonyms": []},
+            {"id": "operations-packaging", "word": "Packaging", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to đóng gói in a professional context.", "defVi": "đóng gói", "exampleEn": "The operations & logistics team reviewed the packaging before making a decision.", "exampleVi": "", "collocations": ["packaging policy"], "synonyms": []},
+            {"id": "operations-label", "word": "Label", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to nhãn in a professional context.", "defVi": "nhãn", "exampleEn": "The operations & logistics team reviewed the label before making a decision.", "exampleVi": "", "collocations": ["label policy"], "synonyms": []},
+            {"id": "operations-container", "word": "Container", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to công-ten-nơ in a professional context.", "defVi": "công-ten-nơ", "exampleEn": "The operations & logistics team reviewed the container before making a decision.", "exampleVi": "", "collocations": ["container policy"], "synonyms": []},
+            {"id": "operations-customs", "word": "Customs", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to hải quan in a professional context.", "defVi": "hải quan", "exampleEn": "The operations & logistics team reviewed the customs before making a decision.", "exampleVi": "", "collocations": ["customs policy"], "synonyms": []},
+            {"id": "operations-clearance", "word": "Clearance", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to thông quan in a professional context.", "defVi": "thông quan", "exampleEn": "The operations & logistics team reviewed the clearance before making a decision.", "exampleVi": "", "collocations": ["clearance policy"], "synonyms": []},
+            {"id": "operations-tariff", "word": "Tariff", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to thuế quan in a professional context.", "defVi": "thuế quan", "exampleEn": "The operations & logistics team reviewed the tariff before making a decision.", "exampleVi": "", "collocations": ["tariff policy"], "synonyms": []},
+            {"id": "operations-export", "word": "Export", "ipa": "—", "pos": "Verb", "category": "Operations & Logistics", "defEn": "A business term referring to xuất khẩu in a professional context.", "defVi": "xuất khẩu", "exampleEn": "The operations & logistics team reviewed the export before making a decision.", "exampleVi": "", "collocations": ["export policy"], "synonyms": []},
+            {"id": "operations-import", "word": "Import", "ipa": "—", "pos": "Verb", "category": "Operations & Logistics", "defEn": "A business term referring to nhập khẩu in a professional context.", "defVi": "nhập khẩu", "exampleEn": "The operations & logistics team reviewed the import before making a decision.", "exampleVi": "", "collocations": ["import policy"], "synonyms": []},
+            {"id": "operations-tracking", "word": "Tracking", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to theo dõi in a professional context.", "defVi": "theo dõi", "exampleEn": "The operations & logistics team reviewed the tracking before making a decision.", "exampleVi": "", "collocations": ["tracking policy"], "synonyms": []},
+            {"id": "operations-turnaround-time", "word": "Turnaround Time", "ipa": "—", "pos": "Noun", "category": "Operations & Logistics", "defEn": "A business term referring to thời gian xử lý in a professional context.", "defVi": "thời gian xử lý", "exampleEn": "The operations & logistics team reviewed the turnaround time before making a decision.", "exampleVi": "", "collocations": ["turnaround time policy"], "synonyms": []}
+        ];
+
+        function showWordPopover(wordId) {
+            const wordObj = toeicWords.find(w => w.id === wordId);
+            if (!wordObj) return;
+
+            document.getElementById('pop-word').innerText = wordObj.word;
+            document.getElementById('pop-ipa').innerText = wordObj.ipa;
+            document.getElementById('pop-pos').innerText = wordObj.pos;
+            document.getElementById('pop-def-vi').innerText = wordObj.defVi;
+            document.getElementById('pop-example').innerText = `"${wordObj.exampleEn}"`;
+
+            const audioBtn = document.getElementById('pop-audio-btn');
+            audioBtn.onclick = () => playSpeech(wordObj.word, 'pop-audio-btn');
+
+            document.getElementById('interactive-popover').classList.remove('hidden');
+        }
+
+        function closePopover() {
+            document.getElementById('interactive-popover').classList.add('hidden');
+        }
+
+        function openWordDetail(wordId) {
+            const wordObj = toeicWords.find(w => w.id === wordId);
+            if (!wordObj) return;
+
+            document.getElementById('hero-word').innerText = wordObj.word;
+            document.getElementById('hero-ipa').innerText = wordObj.ipa;
+            document.getElementById('hero-pos').innerText = wordObj.pos;
+            document.getElementById('hero-category').innerText = wordObj.category;
+            document.getElementById('hero-def-en').innerText = `"${wordObj.defEn}"`;
+            document.getElementById('hero-def-vi').innerText = wordObj.defVi;
+            document.getElementById('hero-example-en').innerText = `"${wordObj.exampleEn}"`;
+            document.getElementById('hero-example-vi').innerText = `(${wordObj.exampleVi})`;
+
+            const collocationsContainer = document.getElementById('hero-collocations');
+            collocationsContainer.innerHTML = wordObj.collocations.map(c => `<li>${c}</li>`).join('');
+
+            document.getElementById('hero-synonyms').innerText = wordObj.synonyms.join(', ');
+            document.getElementById('hero-footer-cat').innerText = `Chủ đề: ${wordObj.category}`;
+
+            updateHeroBookmarkIcon();
+            switchTab('front-page');
+        }
+
+        function flipCard() {
+            document.getElementById('flashcard-inner').classList.toggle('rotate-y-180');
+        }
+
+        function renderQuizQuestion() {
+            const container = document.getElementById('quiz-content');
+            if (!container) return;
+            if (!Array.isArray(toeicWords) || toeicWords.length < 4) {
+                container.innerHTML = '<p class="text-sm text-terracotta">Chưa có đủ từ vựng để tạo câu hỏi.</p>';
+                return;
+            }
+
+            const currentTarget = toeicWords[currentQuizIndex % toeicWords.length];
+            const distractors = toeicWords.filter(w => w.id !== currentTarget.id).sort(() => 0.5 - Math.random()).slice(0, 3);
+            const choices = [currentTarget, ...distractors].sort(() => 0.5 - Math.random());
+
+            container.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs uppercase font-bold text-terracotta tracking-wider">Câu hỏi ${currentQuizIndex + 1}</span>
+                        <button onclick="playSpeech('${currentTarget.word}', 'quiz-audio')" id="quiz-audio" class="p-2 bg-terracotta text-white rounded-full hover:bg-terracotta-hover transition flex items-center gap-1 text-xs font-bold px-3">
+                            <i class="ph-bold ph-speaker-high"></i> Nghe từ phát âm
+                        </button>
+                    </div>
+
+                    <p class="font-serif text-lg text-ink">
+                        Chọn từ chính xác có nghĩa: <strong class="text-terracotta">"${currentTarget.defVi}"</strong>
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2" id="quiz-options">
+                        ${choices.map(c => `
+                            <button onclick="checkQuizAnswer('${c.id}', '${currentTarget.id}')" class="p-4 bg-paper border border-borderline rounded text-left hover:border-terracotta font-serif font-bold text-base text-ink transition">
+                                ${c.word} <span class="font-sans text-xs text-ink-light font-normal italic">(${c.pos})</span>
+                            </button>
+                        `).join('')}
+                    </div>
+
+                    <div id="quiz-feedback" class="hidden p-3 text-xs font-bold rounded"></div>
+                </div>
+            `;
+        }
+
+        function checkQuizAnswer(selectedId, correctId) {
+            const feedback = document.getElementById('quiz-feedback');
+            const buttons = document.querySelectorAll('#quiz-options button');
+            feedback.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+
+            if (selectedId === correctId) {
+                quizScore += 10;
+                document.getElementById('quiz-score').innerText = `Điểm: ${quizScore}`;
+                feedback.classList.add('bg-green-100', 'text-green-800');
+                feedback.innerText = "Chính xác! +10 điểm. Chuyển sang câu tiếp theo...";
+                buttons.forEach(btn => btn.disabled = true);
+                setTimeout(() => { currentQuizIndex++; renderQuizQuestion(); }, 900);
+            } else {
+                feedback.classList.add('bg-red-100', 'text-red-800');
+                feedback.innerHTML = `Chưa chính xác. Điểm đã trở về 0. Bài chơi sẽ bắt đầu lại từ câu 1.<br><button onclick="restartQuiz()" class="mt-3 px-4 py-2 rounded bg-terracotta text-white font-bold hover:bg-terracotta-hover">↻ Chơi lại ngay</button>`;
+                buttons.forEach(btn => btn.disabled = true);
+                quizScore = 0;
+                currentQuizIndex = 0;
+                document.getElementById('quiz-score').innerText = 'Điểm: 0';
+                setTimeout(() => { if (document.getElementById('view-quiz') && !document.getElementById('view-quiz').classList.contains('hidden')) renderQuizQuestion(); }, 1600);
+            }
+        }
+
+        function restartQuiz() {
+            quizScore = 0;
+            currentQuizIndex = 0;
+            document.getElementById('quiz-score').innerText = 'Điểm: 0';
+            renderQuizQuestion();
+        }
+
+        function updateSavedCountUI() {
+            document.getElementById('saved-count').innerText = savedWords.length;
+        }
+
+        function isWordSaved(wordId) {
+            return savedWords.some(w => w.id === wordId);
+        }
+
+        function toggleBookmark(wordId) {
+            if (isWordSaved(wordId)) {
+                savedWords = savedWords.filter(w => w.id !== wordId);
+            } else {
+                const targetObj = toeicWords.find(w => w.id === wordId);
+                if (targetObj) savedWords.push(targetObj);
+            }
+            saveBookmarksToStorage();
+            renderSavedWordsView();
+            renderGlossary();
+            updateHeroBookmarkIcon();
+        }
+
+        function toggleBookmarkHero() {
+            const currentHeroWordText = document.getElementById('hero-word').innerText.toLowerCase();
+            const currentObj = toeicWords.find(w => w.word.toLowerCase() === currentHeroWordText);
+            if (currentObj) toggleBookmark(currentObj.id);
+        }
+
+        function updateHeroBookmarkIcon() {
+            const currentHeroWordText = document.getElementById('hero-word').innerText.toLowerCase();
+            const currentObj = toeicWords.find(w => w.word.toLowerCase() === currentHeroWordText);
+            const icon = document.getElementById('hero-bookmark-icon');
+            if (currentObj && isWordSaved(currentObj.id)) {
+                icon.className = 'ph-fill ph-bookmark-simple text-gold text-base';
+            } else {
+                icon.className = 'ph-bold ph-bookmark-simple text-white text-base';
+            }
+        }
+
+        function clearAllBookmarks() {
+            if (confirm("Bạn có chắc chắn muốn xóa tất cả từ đã lưu?")) {
+                savedWords = [];
+                saveBookmarksToStorage();
+                renderSavedWordsView();
+                renderGlossary();
+                updateHeroBookmarkIcon();
+            }
+        }
+
+        function renderSavedWordsView() {
+            const grid = document.getElementById('saved-words-grid');
+            if (savedWords.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-paper-card border border-borderline rounded-lg">
+                        <i class="ph-bold ph-bookmark text-4xl text-ink-light mb-2"></i>
+                        <p class="font-serif text-lg text-ink">Chưa có từ vựng nào được lưu.</p>
+                        <p class="text-xs text-ink-light">Bấm vào biểu tượng Bookmark trên từ vựng để lưu vào danh sách học lại.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = savedWords.map(w => `
+                <div class="bg-paper-card border border-borderline p-6 rounded shadow-sm hover:shadow-md transition space-y-4 flex flex-col justify-between relative">
+                    <button onclick="toggleBookmark('${w.id}')" class="absolute top-4 right-4 text-gold hover:text-terracotta">
+                        <i class="ph-fill ph-bookmark-simple text-xl"></i>
+                    </button>
+                    <div>
+                        <span class="text-[10px] uppercase font-bold text-terracotta tracking-wider bg-terracotta/10 px-2 py-0.5 rounded">${w.category}</span>
+                        <h3 class="font-serif-title text-2xl font-bold text-ink mt-2 mb-1">${w.word}</h3>
+                        <p class="text-sm font-serif italic text-ink-light mb-2">${w.ipa} • <span class="font-sans text-xs font-bold">${w.pos}</span></p>
+                        <p class="text-sm font-semibold text-terracotta mb-3">${w.defVi}</p>
+                        <p class="text-xs font-serif text-ink italic bg-paper p-3 border-l-2 border-terracotta rounded-r">
+                            "${w.exampleEn}"
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-ink/10 flex justify-between items-center text-xs">
+                        <button onclick="playSpeech('${w.word}')" class="font-bold text-terracotta flex items-center gap-1">
+                            <i class="ph-bold ph-speaker-high"></i> Nghe âm
+                        </button>
+                        <button onclick="openWordDetail('${w.id}')" class="font-bold text-ink hover:text-terracotta">Xem chi tiết</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function generateCategoryArticle(categoryName) {
+            const catWords = toeicWords.filter(w => w.category === categoryName);
+            if (catWords.length < 3) return;
+
+            const selectedThree = catWords.slice(0, 4);
+            document.getElementById('article-title').innerText = `Executive Briefing: Modern Developments in ${categoryName}`;
+
+            const articleBody = document.getElementById('article-body');
+            articleBody.innerHTML = `
+                <p class="mb-4">
+                    In today's fast-moving international markets, leaders must constantly evaluate how they manage 
+                    <span class='editorial-word text-terracotta font-bold underline cursor-pointer' onclick='showWordPopover("${selectedThree[0].id}")'>${selectedThree[0].word.toLowerCase()}</span> 
+                    to stay ahead of industry benchmarks. Organizations that fail to adapt risk losing their competitive advantage.
+                </p>
+                <p class="mb-4">
+                    Operational efficiency requires executives to regularly review internal policies. For instance, establishing a clear process to 
+                    <span class='editorial-word text-terracotta font-bold underline cursor-pointer' onclick='showWordPopover("${selectedThree[1].id}")'>${selectedThree[1].word.toLowerCase()}</span> 
+                    ensures that all department heads remain aligned with core strategic objectives.
+                </p>
+                <p class="mb-4">
+                    Finally, investing in modern solutions guarantees smooth performance. Whether handling a complex 
+                    <span class='editorial-word text-terracotta font-bold underline cursor-pointer' onclick='showWordPopover("${selectedThree[2].id}")'>${selectedThree[2].word.toLowerCase()}</span> 
+                    or upgrading digital infrastructure, precision and compliance remain paramount for sustainable growth.
+                </p>
+            `;
+        }
+
+        let currentPage = 1;
+        const itemsPerPage = 15;
+
+        function renderGlossary(words = toeicWords) {
+            const searchInput = document.getElementById('search-input');
+            const tbody = document.getElementById('glossary-tbody');
+            const paginationEl = document.getElementById('glossary-pagination');
+            if (!searchInput || !tbody || !paginationEl || !Array.isArray(words)) return;
+            const query = searchInput.value.trim().toLowerCase();
+            const filtered = words.filter(w => 
+                w.word.toLowerCase().includes(query) || 
+                w.defVi.toLowerCase().includes(query) ||
+                w.pos.toLowerCase().includes(query) ||
+                w.category.toLowerCase().includes(query)
+            );
+
+            const totalPages = Math.ceil(filtered.length / itemsPerPage) || 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const paginatedWords = filtered.slice(startIndex, startIndex + itemsPerPage);
+
+            tbody.innerHTML = paginatedWords.map(w => {
+                const isSaved = isWordSaved(w.id);
+                return `
+                <tr class="hover:bg-paper transition">
+                    <td class="p-4 text-center">
+                        <button onclick="toggleBookmark('${w.id}')" class="text-gold hover:text-terracotta">
+                            <i class="${isSaved ? 'ph-fill' : 'ph-bold'} ph-bookmark-simple text-lg"></i>
+                        </button>
+                    </td>
+                    <td class="p-4 font-serif">
+                        <div class="font-bold text-base text-ink hover:text-terracotta cursor-pointer" onclick="openWordDetail('${w.id}')">${w.word}</div>
+                        <div class="text-xs text-ink-light italic">${w.ipa}</div>
+                    </td>
+                    <td class="p-4 font-sans text-xs">
+                        <span class="bg-ink/10 px-2 py-1 rounded font-bold uppercase text-ink">${w.pos}</span>
+                    </td>
+                    <td class="p-4 font-sans font-semibold text-terracotta text-sm">
+                        ${w.defVi}
+                    </td>
+                    <td class="p-4 font-sans text-xs text-ink-light">
+                        ${w.category}
+                    </td>
+                    <td class="p-4 text-center">
+                        <button onclick="playSpeech('${w.word}', 'glos-btn-${w.id}')" id="glos-btn-${w.id}" class="p-2 bg-terracotta text-white rounded-full hover:bg-terracotta-hover transition inline-flex items-center justify-center">
+                            <i class="ph-bold ph-speaker-high"></i>
+                        </button>
+                    </td>
+                </tr>
+            `}).join('');
+
+            paginationEl.innerHTML = `
+                <span class="text-xs text-ink-light font-sans font-semibold">
+                    Hiển thị ${startIndex + 1} - ${Math.min(startIndex + itemsPerPage, filtered.length)} trên tổng số ${filtered.length} từ
+                </span>
+                <div class="flex space-x-2">
+                    <button onclick="changeGlossaryPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled class="opacity-40 cursor-not-allowed"' : ''} class="px-3 py-1 bg-paper border border-borderline rounded text-xs font-bold text-ink">
+                        Trang Trước
+                    </button>
+                    <span class="text-xs font-bold px-2 py-1 text-ink">Trang ${currentPage} / ${totalPages}</span>
+                    <button onclick="changeGlossaryPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled class="opacity-40 cursor-not-allowed"' : ''} class="px-3 py-1 bg-paper border border-borderline rounded text-xs font-bold text-ink">
+                        Trang Sau
+                    </button>
+                </div>
+            `;
+        }
+
+        function changeGlossaryPage(newPage) {
+            currentPage = newPage;
+            renderGlossary();
+        }
+
+        function filterGlossary() {
+            currentPage = 1;
+            renderGlossary();
+        }
+
+        let activeFlashcardPool = toeicWords;
+
+        function filterFlashcardsByCategory(catVal) {
+            activeFlashcardPool = catVal === 'All' ? toeicWords : toeicWords.filter(w => w.category === catVal);
+            currentFlashcardIndex = 0;
+            updateFlashcard();
+        }
+
+        function updateFlashcard() {
+            if (activeFlashcardPool.length === 0) return;
+            const card = activeFlashcardPool[currentFlashcardIndex];
+            document.getElementById('fc-word').innerText = card.word;
+            document.getElementById('fc-ipa').innerText = card.ipa;
+            document.getElementById('fc-pos').innerText = card.pos;
+            document.getElementById('fc-category').innerText = card.category;
+            document.getElementById('fc-counter').innerText = `${currentFlashcardIndex + 1} / ${activeFlashcardPool.length}`;
+
+            document.getElementById('fc-def-vi').innerText = card.defVi;
+            document.getElementById('fc-def-en').innerText = `"${card.defEn}"`;
+            document.getElementById('fc-example').innerText = `"${card.exampleEn}"`;
+
+            document.getElementById('flashcard-inner').classList.remove('rotate-y-180');
+        }
+
+        function nextFlashcard() {
+            currentFlashcardIndex = (currentFlashcardIndex + 1) % activeFlashcardPool.length;
+            updateFlashcard();
+        }
+
+        function prevFlashcard() {
+            currentFlashcardIndex = (currentFlashcardIndex - 1 + activeFlashcardPool.length) % activeFlashcardPool.length;
+            updateFlashcard();
+        }
+
+        function randomizeHeroWord() {
+            const randomObj = toeicWords[Math.floor(Math.random() * toeicWords.length)];
+            openWordDetail(randomObj.id);
+        }
+
+        function renderSidebarWords() {
+            const container = document.getElementById('sidebar-words-container');
+            const shuffled = [...toeicWords].sort(() => 0.5 - Math.random()).slice(0, 4);
+            
+            container.innerHTML = shuffled.map(item => `
+                <div class="pt-3 first:pt-0">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-serif-title font-bold text-lg text-ink hover:text-terracotta cursor-pointer" onclick="openWordDetail('${item.id}')">${item.word}</h4>
+                        <button onclick="playSpeech('${item.word}', 'sb-btn-${item.id}')" id="sb-btn-${item.id}" class="p-1.5 text-terracotta hover:bg-terracotta/10 rounded-full transition">
+                            <i class="ph-bold ph-speaker-high"></i>
+                        </button>
+                    </div>
+                    <p class="text-xs text-ink-light font-serif italic mb-1">${item.ipa} • <span class="uppercase font-sans text-[10px] bg-paper-card px-1.5 py-0.5 font-bold">${item.pos}</span></p>
+                    <p class="text-xs font-semibold text-terracotta">${item.defVi}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderCategoryCards() {
+            const categories = [
+                { title: 'Corporate & Management', count: '50 Từ Chuyên Sâu', desc: 'Đàm phán, chiến lược doanh nghiệp, giám sát, tái cấu trúc.' },
+                { title: 'Finance & Accounting', count: '50 Từ Chuyên Sâu', desc: 'Doanh thu, ngân sách, kiểm toán, nợ phải trả, tài sản, đầu tư.' },
+                { title: 'Legal & Contracts', count: '50 Từ Chuyên Sâu', desc: 'Hợp đồng, điều khoản ràng buộc, trọng tài, bồi thường, kiện tụng.' },
+                { title: 'Marketing & Sales', count: '50 Từ Chuyên Sâu', desc: 'Khuyến mãi, đối tượng mục tiêu, quảng cáo, phân phối thương mại.' },
+                { title: 'Human Resources', count: '50 Từ Chuyên Sâu', desc: 'Tuyển dụng, ứng viên, thù lao, đánh giá hiệu suất, phúc lợi nhân sự.' },
+                { title: 'Operations & Logistics', count: '50 Từ Chuyên Sâu', desc: 'Hàng tồn kho, kho hàng, vận tải, thông quan hải quan.' },
+            ];
+
+            const grid = document.getElementById('category-cards-grid');
+            grid.innerHTML = categories.map(cat => `
+                <div onclick="filterCategoryView('${cat.title}')" class="bg-paper-card border border-borderline p-6 hover:border-terracotta cursor-pointer transition flex flex-col justify-between group">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-terracotta block mb-2">${cat.count}</span>
+                        <h4 class="font-serif-title text-xl font-bold text-ink group-hover:text-terracotta transition mb-2">${cat.title}</h4>
+                        <p class="text-xs text-ink-light leading-relaxed">${cat.desc}</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-ink/10 flex items-center justify-between text-xs font-bold text-ink group-hover:text-terracotta">
+                        <span>Khám phá ngay</span>
+                        <i class="ph-bold ph-arrow-right"></i>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCategoryView(catTitle) {
+            switchTab('categories');
+            renderCategoriesView(catTitle);
+        }
+
+        function renderCategoriesView(selectedCat = 'All') {
+            const categoriesList = [
+                'All', 
+                'Corporate & Management', 
+                'Finance & Accounting', 
+                'Legal & Contracts', 
+                'Marketing & Sales', 
+                'Human Resources', 
+                'Operations & Logistics'
+            ];
+            const pillsContainer = document.getElementById('category-pills');
+            
+            pillsContainer.innerHTML = categoriesList.map(cat => `
+                <button onclick="renderCategoriesView('${cat}')" class="px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded border ${cat === selectedCat ? 'bg-terracotta text-white border-terracotta' : 'bg-paper-card border-borderline text-ink hover:border-terracotta'} transition">
+                    ${cat === 'All' ? 'Tất cả (300 từ)' : cat}
+                </button>
+            `).join('');
+
+            const filtered = selectedCat === 'All' ? toeicWords : toeicWords.filter(w => w.category === selectedCat);
+            const grid = document.getElementById('category-words-grid');
+
+            grid.innerHTML = filtered.map(w => `
+                <div class="bg-paper-card border border-borderline p-6 rounded shadow-sm hover:shadow-md transition space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] uppercase font-bold text-terracotta tracking-wider bg-terracotta/10 px-2 py-0.5 rounded">${w.category}</span>
+                            <div class="flex gap-1">
+                                <button onclick="toggleBookmark('${w.id}')" class="p-1.5 text-gold hover:text-terracotta">
+                                    <i class="${isWordSaved(w.id) ? 'ph-fill' : 'ph-bold'} ph-bookmark-simple text-lg"></i>
+                                </button>
+                                <button onclick="playSpeech('${w.word}', 'cat-audio-${w.id}')" id="cat-audio-${w.id}" class="p-1.5 text-terracotta hover:bg-terracotta hover:text-white rounded-full transition" title="Phát âm từ">
+                                    <i class="ph-bold ph-speaker-high text-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <h3 class="font-serif-title text-2xl font-bold text-ink mb-1">${w.word}</h3>
+                        <p class="text-sm font-serif italic text-ink-light mb-2">${w.ipa} • <span class="font-sans text-xs font-bold">${w.pos}</span></p>
+                        <p class="text-sm font-semibold text-terracotta mb-3">${w.defVi}</p>
+                        <p class="text-xs font-serif text-ink italic bg-paper p-3 border-l-2 border-terracotta rounded-r">
+                            "${w.exampleEn}"
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-ink/10 flex justify-between items-center text-xs text-ink-light">
+                        <span class="italic">Syn: ${w.synonyms ? w.synonyms.slice(0, 2).join(', ') : 'N/A'}</span>
+                        <button onclick="openWordDetail('${w.id}')" class="font-bold text-ink hover:text-terracotta">Chi tiết</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.onload = function() {
+            loadBookmarksFromStorage();
+            updateSavedCountUI();
+            renderSidebarWords();
+            renderCategoryCards();
+            renderCategoriesView();
+            // Bài đọc ngữ cảnh đã được bỏ khỏi giao diện; không gọi hàm phụ thuộc vào các phần tử đã xóa.
+            updateFlashcard();
+            renderQuizQuestion();
+            renderGlossary();
+            updateHeroBookmarkIcon();
+        };
+    </script>
+</body>
+</html>
